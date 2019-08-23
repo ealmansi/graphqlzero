@@ -13,6 +13,15 @@ const Index = withApolloClient(
         <Header />
         <Main />
         <Footer />
+        <style jsx global>{`
+          * {
+            font-family: 'Raleway', sans-serif;
+          }
+          html, body {
+            margin: 0;
+            padding: 0;
+          }
+        `}</style>
       </div>
     );
   }

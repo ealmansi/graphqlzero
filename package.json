@@ -6,7 +6,8 @@
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
     "build": "lerna run build",
-    "dev": "lerna run dev --stream --parallel"
+    "dev": "lerna run dev --stream --parallel",
+    "start": "lerna run start --stream --parallel"
   },
   "devDependencies": {
     "lerna": "^3.16.4"
