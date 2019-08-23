@@ -1,0 +1,5 @@
+build:
+  docker:
+    subocean-tiger: Dockerfile
+run:
+  subocean-tiger: yarn start

@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "bootstrap": "yarn && lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "dev": "lerna run dev --stream --parallel",
     "start": "lerna run start --stream --parallel"
