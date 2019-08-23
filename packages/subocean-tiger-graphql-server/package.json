@@ -1,0 +1,23 @@
+{
+  "name": "subocean-tiger-graphql-server",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "apollo-server": "^2.8.2",
+    "graphql": "^14.5.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "parse-link-header": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.2",
+    "@types/node-fetch": "^2.5.0",
+    "@types/parse-link-header": "^1.0.0",
+    "typescript": "^3.5.3"
+  }
+}

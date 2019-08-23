@@ -1,0 +1,20 @@
+{
+  "name": "subocean-tiger-server",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "build": "tsc",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@types/dotenv": "^6.1.1",
+    "dotenv": "^8.1.0",
+    "subocean-tiger-graphql-server": "^0.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "typescript": "^3.5.3"
+  }
+}
