@@ -2,3 +2,11 @@
   command = "yarn bootstrap && yarn build"
   functions = "lambda"
   publish = "apps/subocean-tiger-web/out"
+
+[build.environment]
+  JSON_PLACEHOLDER_URL = "http://jsonplaceholder.typicode.com"
+  GRAPHQL_SERVER_URL = "/.netlify/functions/index"
+
+[context.production.environment]
+  JSON_PLACEHOLDER_URL = "http://jsonplaceholder.typicode.com"
+  GRAPHQL_SERVER_URL = "/.netlify/functions/index"

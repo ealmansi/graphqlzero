@@ -57,5 +57,10 @@ export const handler = (): (event: any, context: any, callback: any) => void => 
   }
 
   const server = new ApolloServer({ typeDefs, resolvers });
-  return server.createHandler();
+  return server.createHandler({
+    cors: {
+      origin: '*',
+      credentials: true,
+    },
+  });
 }

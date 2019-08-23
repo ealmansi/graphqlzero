@@ -28,8 +28,14 @@ const Index = withApolloClient(
 );
 
 function withApolloClient (Component: React.ComponentType) {
-  const uri = 'http://localhost:4000';
-  const client = new ApolloClient({ uri, fetch });
+  const GRAPHQL_SERVER_URL = process.env.GRAPHQL_SERVER_URL
+  if (GRAPHQL_SERVER_URL === undefined) {
+    throw new Error('Missing environment variable GRAPHQL_SERVER_URL.');
+  }
+  const client = new ApolloClient({
+    uri: GRAPHQL_SERVER_URL,
+    fetch
+  });
 	return class extends React.Component {
     render () {
       return (
