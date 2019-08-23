@@ -7,7 +7,7 @@ import { resolvers as postResolvers, typeDefs as postTypeDefs } from './models/p
 import { resolvers as todoResolvers, typeDefs as todoTypeDefs } from './models/todo';
 import { resolvers as userResolvers, typeDefs as userTypeDefs } from './models/user';
 
-export const handler = (): (event: any, context: any, callback: any) => void => {
+export const handler = ((): (event: any, context: any, callback: any) => void => {
   const baseTypeDefs = gql`
     type Query {
       _: Int
@@ -63,4 +63,4 @@ export const handler = (): (event: any, context: any, callback: any) => void => 
       credentials: true,
     },
   });
-}
+})();
