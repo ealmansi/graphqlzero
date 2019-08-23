@@ -28,7 +28,7 @@ const Index = withApolloClient(
 );
 
 function withApolloClient (Component: React.ComponentType) {
-  const GRAPHQL_SERVER_URL = process.env.GRAPHQL_SERVER_URL
+  const GRAPHQL_SERVER_URL = process.env.GRAPHQL_SERVER_URL || "/.netlify/functions/index";
   if (GRAPHQL_SERVER_URL === undefined) {
     throw new Error('Missing environment variable GRAPHQL_SERVER_URL.');
   }
