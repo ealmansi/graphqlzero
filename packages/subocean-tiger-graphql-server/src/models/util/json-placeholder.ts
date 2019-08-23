@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-unfetch';
+import fetch from 'isomorphic-fetch';
 import parseLinkHeader from 'parse-link-header';
 import { OperatorOptions, Page, PageMetadata, PageQueryOptions, PaginateOptions, PaginationLinks, SearchOptions, SliceOptions, SortOptions } from '../page';
 

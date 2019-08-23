@@ -6,7 +6,7 @@
     "incremental": true,
 
     /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
-    "target": "es6",
+    "target": "es5",
 
     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "module": "commonjs",
@@ -67,39 +67,39 @@
     /* Strict Type-Checking Options */
 
     /* Enable all strict type-checking options. */
-    "strict": true,
+    // "strict": true,
 
     /* Raise error on expressions and declarations with an implied 'any' type. */
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
 
     /* Enable strict null checks. */
-    "strictNullChecks": true,
+    // "strictNullChecks": true,
 
     /* Enable strict checking of function types. */
-    "strictFunctionTypes": true,
+    // "strictFunctionTypes": true,
 
     /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
     // "strictBindCallApply": true,
 
     /* Enable strict checking of property initialization in classes. */
-    "strictPropertyInitialization": true,
+    // "strictPropertyInitialization": true,
 
     /* Raise error on 'this' expressions with an implied 'any' type. */
-    "noImplicitThis": true,
+    // "noImplicitThis": true,
 
     /* Parse in strict mode and emit "use strict" for each source file. */
-    "alwaysStrict": true,
+    // "alwaysStrict": true,
 
     /* Additional Checks */
 
     /* Report errors on unused locals. */
-    "noUnusedLocals": true,
+    // "noUnusedLocals": true,
 
     /* Report errors on unused parameters. */
-    "noUnusedParameters": true,
+    // "noUnusedParameters": true,
 
     /* Report error when not all code paths in function return a value. */
-    "noImplicitReturns": true,
+    // "noImplicitReturns": true,
 
     /* Report errors for fallthrough cases in switch statement. */
     // "noFallthroughCasesInSwitch": true,

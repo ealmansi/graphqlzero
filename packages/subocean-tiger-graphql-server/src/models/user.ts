@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-lambda';
+import { gql } from 'apollo-server';
 import { Album } from './album';
 import { Page, PageQueryOptions } from './page';
 import { Post } from './post';

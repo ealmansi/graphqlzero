@@ -14,11 +14,11 @@
   "devDependencies": {
     "bufferutil": "^4.0.1",
     "lerna": "^3.16.4",
-    "netlify-lambda": "^1.6.3",
     "utf-8-validate": "^5.0.2"
   },
   "dependencies": {
     "apollo-server": "^2.8.2",
+    "netlify-lambda": "^1.6.3",
     "graphql": "^14.4.2"
   }
 }
