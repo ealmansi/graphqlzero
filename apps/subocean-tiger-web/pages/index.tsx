@@ -1,5 +1,5 @@
-import { ApolloProvider, useQuery } from '@apollo/react-hooks';
-import ApolloClient, { gql } from 'apollo-boost';
+import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks';
+import ApolloClient, { gql, ApolloError } from 'apollo-boost';
 import fetch from 'isomorphic-unfetch';
 import Prism from 'prismjs';
 import React, { useEffect, useState } from 'react';
@@ -159,7 +159,7 @@ function Intro () {
 }
 
 function Examples () {
-  const [activeQuery, setActiveQuery] = useState('single-post');
+  const [activeQuery, setActiveQuery] = useState('get-post');
   const exampleQueries = getExampleQueries();
   const exampleQuery = exampleQueries.find(({ id }) => id === activeQuery) || exampleQueries[0];
   function buildClassName (id: string): string {
@@ -290,10 +290,17 @@ function QueryDisplay (props: { exampleQuery: ExampleQuery }) {
 function ResponseDisplay (props: { exampleQuery: ExampleQuery }) {
   useEffect(() => Prism.highlightAll());
   const { exampleQuery } = props;
-  const { query } = exampleQuery;
-  const queryResult = useQuery(gql`${query}`);
-  const { loading, error, data } = queryResult;
-  let code = null;
+  const { type, query } = exampleQuery;
+  let loading: boolean | undefined, error: ApolloError | undefined, data: any;
+  if (type === 'query') {
+    const queryResult = useQuery(gql`${query}`);
+    ({ loading, error, data } = queryResult);
+  }
+  else {
+    const [_, mutationResult] = useMutation(gql`${query}`);
+    ({ loading, error, data } = mutationResult);
+  }
+  let code: JSX.Element | null = null;
   if (error !== undefined) {
     code = <code className="language-textfile">Oops. Something went wrong.</code>;
   }

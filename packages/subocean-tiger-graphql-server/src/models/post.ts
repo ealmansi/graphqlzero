@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server';
+import { gql } from 'apollo-server-lambda';
 import { Comment } from './comment';
 import { Page, PageQueryOptions } from './page';
 import { fetchUser, User } from './user';

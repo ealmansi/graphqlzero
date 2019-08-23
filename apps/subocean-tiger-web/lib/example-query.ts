@@ -1,144 +1,30 @@
 export default interface ExampleQuery {
   id: string;
   label: string;
+  type: 'query' | 'mutation';
   query: string;
 }
 
 export function getExampleQueries (): Array<ExampleQuery> {
   return [
     {
-      id: 'single-post',
-      label: 'Single Post',
+      id: 'get-post',
+      label: 'Get a post',
+      type: 'query',
       query: unindent(`
-        query SinglePost {
+        query getPost {
           post(id: 1) {
-            title
-            body
-          }
-        }
-      `)
-    },
-    {
-      id: 'list-posts',
-      label: 'List Posts',
-      query: unindent(`
-        query ListPosts {
-          posts(options: { paginate: { limit: 5 } }) {
-            data {
-              id
-              title
-              body
-            }
-          }
-        }
-      `)
-    },
-    {
-      id: 'single-comment',
-      label: 'Single Comment',
-      query: unindent(`
-        query SingleComment {
-          comment(id: 1) {
-            name
-            email
-            body
-          }
-        }
-      `)
-    },
-    {
-      id: 'list-comments',
-      label: 'List Comments',
-      query: unindent(`
-        query ListComments {
-          comments(options: { paginate: { limit: 5 } }) {
-            data {
-              id
-              name
-              email
-              body
-            }
-          }
-        }
-      `)
-    },
-    {
-      id: 'single-album',
-      label: 'Single Album',
-      query: unindent(`
-        query SingleAlbum {
-          album(id: 1) {
             id
           }
         }
       `)
     },
     {
-      id: 'list-albums',
-      label: 'List Albums',
+      id: 'get-user',
+      label: 'Get a user',
+      type: 'query',
       query: unindent(`
-        query ListAlbums {
-          albums(options: { paginate: { limit: 5 } }) {
-            data {
-              id
-            }
-          }
-        }
-      `)
-    },
-    {
-      id: 'single-photo',
-      label: 'Single Photo',
-      query: unindent(`
-        query SinglePhoto {
-          photo(id: 1) {
-            id
-          }
-        }
-      `)
-    },
-    {
-      id: 'list-photos',
-      label: 'List Photos',
-      query: unindent(`
-        query ListPhotos {
-          photos(options: { paginate: { limit: 5 } }) {
-            data {
-              id
-            }
-          }
-        }
-      `)
-    },
-    {
-      id: 'single-todo',
-      label: 'Single Todo',
-      query: unindent(`
-        query SingleTodo {
-          todo(id: 1) {
-            id
-          }
-        }
-      `)
-    },
-    {
-      id: 'list-todos',
-      label: 'List Todos',
-      query: unindent(`
-        query ListTodos {
-          todos(options: { paginate: { limit: 5 } }) {
-            data {
-              id
-            }
-          }
-        }
-      `)
-    },
-    {
-      id: 'single-user',
-      label: 'Single User',
-      query: unindent(`
-        query SingleUser {
+        query getUser {
           user(id: 1) {
             id
           }
@@ -146,14 +32,77 @@ export function getExampleQueries (): Array<ExampleQuery> {
       `)
     },
     {
-      id: 'list-users',
-      label: 'List Users',
+      id: 'get-user-todos',
+      label: 'Get user posts',
+      type: 'query',
       query: unindent(`
-        query ListUsers {
-          users(options: { paginate: { limit: 5 } }) {
+        query getUserPosts {
+          user(id: 1) {
+            posts(options: { paginate: { limit: 5 } }) {
+              data {
+                id
+              }
+            }
+          }
+        }
+      `)
+    },
+    {
+      id: 'get-posts',
+      label: 'Get posts',
+      type: 'query',
+      query: unindent(`
+        query getPosts {
+          posts(options: { paginate: { limit: 5 } }) {
             data {
               id
             }
+          }
+        }
+      `)
+    },
+    {
+      id: 'get-comments',
+      label: 'Get comments',
+      type: 'query',
+      query: unindent(`
+        query getComments {
+    
+        }
+      `)
+    },
+    {
+      id: 'create-post',
+      label: 'Create a post',
+      type: 'mutation',
+      query: unindent(`
+        mutation createPost {
+          createPost(input: { title: "some title", body: "some body" }) {
+            id
+          }
+        }
+      `)
+    },
+    {
+      id: 'update-post',
+      label: 'Update a post',
+      type: 'mutation',
+      query: unindent(`
+        mutation updatePost {
+          updatePost(id: 1) {
+            id
+          }
+        }
+      `)
+    },
+    {
+      id: 'delete-post',
+      label: 'Delete a post',
+      type: 'mutation',
+      query: unindent(`
+        mutation deletePost {
+          deletePost(id: 1) {
+            id
           }
         }
       `)

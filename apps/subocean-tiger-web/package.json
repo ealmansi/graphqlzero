@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "postbuild": "next export",
+    "start": "next start"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.0.1",

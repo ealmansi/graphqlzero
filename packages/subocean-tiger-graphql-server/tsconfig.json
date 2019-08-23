@@ -24,13 +24,13 @@
     // "jsx": "preserve",
 
     /* Generates corresponding '.d.ts' file. */
-    "declaration": true,
+    // "declaration": true,
 
     /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    "declarationMap": true,
+    // "declarationMap": true,
 
     /* Generates corresponding '.map' file. */
-    "sourceMap": true,
+    // "sourceMap": true,
 
     /* Concatenate and emit output to single file. */
     // "outFile": "./",

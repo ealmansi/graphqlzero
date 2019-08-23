@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server';
+import { gql } from 'apollo-server-lambda';
 import { Album, fetchAlbum } from './album';
 import { Page, PageQueryOptions } from './page';
 import { createResource, deleteResource, fetchPage, fetchResource, updateResource } from './util/json-placeholder';

@@ -1,4 +1,4 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from 'apollo-server-lambda';
 import { resolvers as albumResolvers, typeDefs as albumTypeDefs } from './models/album';
 import { resolvers as commentResolvers, typeDefs as commentTypeDefs } from './models/comment';
 import { resolvers as pageResolvers, typeDefs as pageTypeDefs } from './models/page';
@@ -7,7 +7,7 @@ import { resolvers as postResolvers, typeDefs as postTypeDefs } from './models/p
 import { resolvers as todoResolvers, typeDefs as todoTypeDefs } from './models/todo';
 import { resolvers as userResolvers, typeDefs as userTypeDefs } from './models/user';
 
-export function buildGraphqlServer (): ApolloServer {
+export const handler = (): (event: any, context: any, callback: any) => void => {
   const baseTypeDefs = gql`
     type Query {
       _: Int
@@ -56,5 +56,6 @@ export function buildGraphqlServer (): ApolloServer {
     User: userResolvers.User,
   }
 
-  return new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({ typeDefs, resolvers });
+  return server.createHandler();
 }

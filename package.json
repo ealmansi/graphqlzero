@@ -6,11 +6,16 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "postbuild": "yarn netlify",
     "dev": "lerna run dev --stream --parallel",
-    "start": "lerna run start --stream --parallel"
+    "start": "lerna run start --stream --parallel",
+    "netlify": "netlify-lambda build packages/subocean-tiger-graphql-server/dist/"
   },
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "bufferutil": "^4.0.1",
+    "lerna": "^3.16.4",
+    "netlify-lambda": "^1.6.3",
+    "utf-8-validate": "^5.0.2"
   },
   "dependencies": {
     "apollo-server": "^2.8.2",
