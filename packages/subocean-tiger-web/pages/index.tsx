@@ -1,12 +1,16 @@
-import { ApolloProvider, useQuery, useMutation } from '@apollo/react-hooks';
-import ApolloClient, { gql, ApolloError } from 'apollo-boost';
+import { ApolloProvider, useMutation, useQuery } from '@apollo/react-hooks';
+import ApolloClient, { ApolloError, gql } from 'apollo-boost';
 import fetch from 'isomorphic-unfetch';
 import Prism from 'prismjs';
 import React, { useEffect, useState } from 'react';
 import ExampleQuery, { getExampleQueries } from '../lib/example-query';
+import prismGraphql from '../lib/prism-graphql';
+import prismJson from '../lib/prism-json';
 
 const Index = withApolloClient(
   function Index () {
+    Prism.languages.graphql = prismGraphql;
+    Prism.languages.json = prismJson;
     return (
       <div>
         <TopBar />
@@ -14,12 +18,43 @@ const Index = withApolloClient(
         <Main />
         <Footer />
         <style jsx global>{`
-          * {
+          html, body {
             font-family: 'Raleway', sans-serif;
           }
           html, body {
             margin: 0;
             padding: 0;
+          }
+          pre {
+            min-height: 120px;
+            max-height: 300px;
+            padding: 1em;
+            margin: .5em 0;
+            overflow: auto;
+            background: #f5f2f0;
+          }
+          code {
+            color: black;
+            background: none;
+            text-shadow: 0 1px white;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1em;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 1.5;
+            -moz-tab-size: 4;
+            -o-tab-size: 4;
+            tab-size: 4;
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
           }
         `}</style>
       </div>
@@ -277,24 +312,17 @@ function Examples () {
 }
 
 function QueryDisplay (props: { exampleQuery: ExampleQuery }) {
-  useEffect(() => Prism.highlightAll());
   const { exampleQuery } = props;
   const { query } = exampleQuery;
+  const codeHtml = Prism.highlight(query, Prism.languages.graphql, 'graphql');
   return (
     <pre>
-      <code className="language-graphql">{query}</code>
-      <style jsx>{`
-        pre {
-          min-height: 100px;
-          max-height: 300px;
-        }
-      `}</style>
+      <code dangerouslySetInnerHTML={{ __html: codeHtml }}></code>
     </pre>
   )
 }
 
 function ResponseDisplay (props: { exampleQuery: ExampleQuery }) {
-  useEffect(() => Prism.highlightAll());
   const { exampleQuery } = props;
   const { type, query } = exampleQuery;
   let loading: boolean | undefined, error: ApolloError | undefined, data: any;
@@ -306,13 +334,13 @@ function ResponseDisplay (props: { exampleQuery: ExampleQuery }) {
     const [_, mutationResult] = useMutation(gql`${query}`);
     ({ loading, error, data } = mutationResult);
   }
-  let code: JSX.Element | null = null;
+  let codeHtml: string | null = null
   if (error !== undefined) {
-    code = <code className="language-textfile">Oops. Something went wrong.</code>;
+    codeHtml = Prism.highlight('Oops. Something went wrong.', Prism.languages.markup, 'markup');
   }
   else {
     if (loading) {
-      code = <code className="language-textfile">Loading ...</code>;
+      codeHtml = Prism.highlight('Loading ...', Prism.languages.markup, 'markup');
     }
     else {
       const omitTypename = (key: string, value: any) => {
@@ -322,18 +350,12 @@ function ResponseDisplay (props: { exampleQuery: ExampleQuery }) {
         return value;
       }
       const dataDisplay = JSON.stringify(data, omitTypename, 2);
-      code = <code className="language-json">{dataDisplay}</code>;
+      codeHtml = Prism.highlight(dataDisplay, Prism.languages.json, 'json');
     }
   }
   return (
     <pre>
-      {code}      
-      <style jsx>{`
-        pre {
-          min-height: 100px;
-          max-height: 300px;
-        }
-      `}</style>
+      <code dangerouslySetInnerHTML={{ __html: codeHtml }}></code>
     </pre>
   )
 }

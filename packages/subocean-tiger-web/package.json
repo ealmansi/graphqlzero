@@ -25,6 +25,7 @@
     "@types/node": "^12.7.2",
     "@types/prismjs": "^1.16.0",
     "@types/react": "^16.9.2",
+    "dotenv": "^8.1.0",
     "typescript": "^3.5.3",
     "webpack": "4.39.0"
   }

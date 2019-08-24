@@ -1,4 +1,10 @@
 const webpack = require('webpack');
+const path = require('path');
+const { config } = require('dotenv');
+
+config({
+  path: path.resolve(__dirname, '..', '..', '.env')
+});
 
 module.exports = {
   webpack(config) {

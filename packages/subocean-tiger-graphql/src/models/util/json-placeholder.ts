@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import parseLinkHeader from 'parse-link-header';
 import { OperatorOptions, Page, PageMetadata, PageQueryOptions, PaginateOptions, PaginationLinks, SearchOptions, SliceOptions, SortOptions } from '../page';
 
-const apiBaseUrl = process.env.JSON_PLACEHOLDER_URL || "https://jsonplaceholder.typicode.com";
+const apiBaseUrl = process.env.JSON_PLACEHOLDER_URL;
 if (apiBaseUrl === undefined) {
   throw new Error('Missing env variable JSON_PLACEHOLDER_URL.');
 }
