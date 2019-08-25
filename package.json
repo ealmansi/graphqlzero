@@ -1,23 +1,24 @@
 {
-  "name": "subocean-tiger",
-  "version": "0.1.0",
+  "name": "subocean-tiger-graphql",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "build": "lerna run build",
-    "postbuild": "yarn netlify",
-    "dev": "concurrently 'lerna run dev --stream --parallel' 'yarn netlify:dev'",
-    "start": "lerna run start --stream --parallel",
-    "netlify": "netlify-lambda build --config webpack.functions.js packages/subocean-tiger-graphql/dist/lambda",
-    "netlify:dev": "netlify-lambda serve --config webpack.functions.js packages/subocean-tiger-graphql/dist/lambda"
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "dev": "concurrently 'yarn build:watch' 'cd subocean-tiger-web && now dev'",
+    "deploy": "cd subocean-tiger-web && now"
+  },
+  "dependencies": {
+    "apollo-server-micro": "^2.9.0",
+    "graphql": "^14.5.3",
+    "isomorphic-fetch": "^2.2.1",
+    "parse-link-header": "^1.0.1"
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/parse-link-header": "^1.0.0",
     "concurrently": "^4.1.2",
-    "dotenv": "^8.1.0",
-    "lerna": "^3.16.4",
-    "netlify-lambda": "^1.6.3",
-    "node-noop": "^1.0.0",
-    "webpack": "4.39.2"
+    "typescript": "^3.5.3"
   }
 }
