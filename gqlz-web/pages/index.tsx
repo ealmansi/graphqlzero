@@ -6,6 +6,10 @@ import React, { useEffect, useState } from 'react';
 import '../css/font.css';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
 
+const lightColor = 'rgba(245,149,214,1)'; // rgba-primary-1
+const lightColorTransparent = 'rgba(245,149,214,0.2)'; // rgba-primary-1
+const darkColor = 'rgba(126,  0, 85,1)'; // rgba-primary-4
+
 const Index = withApolloClient(
   function Index () {
     return (
@@ -20,6 +24,17 @@ const Index = withApolloClient(
             padding: 0;
             font-family: 'Raleway', sans-serif;
           }
+          .rgba-primary-0 { color: rgba(235,  3,160,1) }	/* Main Primary color */
+          .rgba-primary-1 { color: rgba(245,149,214,1) }
+          .rgba-primary-2 { color: rgba(238, 68,183,1) }
+          .rgba-primary-3 { color: rgba(199,  0,134,1) }
+          .rgba-primary-4 { color: rgba(126,  0, 85,1) }
+
+          .rgba-complement-0 { color: rgba(182,250,  3,1) }	/* Main Complement color */
+          .rgba-complement-1 { color: rgba(225,253,154,1) }
+          .rgba-complement-2 { color: rgba(201,251, 72,1) }
+          .rgba-complement-3 { color: rgba(175,242,  0,1) }
+          .rgba-complement-4 { color: rgba(113,156,  0,1) }
         `}</style>
       </div>
     );
@@ -30,22 +45,22 @@ function TopBar () {
   return (
     <div>
       <nav>
-        <a href="#" className="brand">GraphQLZero</a>
+        <a href="#" className="brand rgba-primary-4">GraphQLZero</a>
         <ul>
           <li>
-            <a href="#examples">Examples</a>
+            <a href="#examples" className="rgba-primary-4">Examples</a>
           </li>
           <li>
-            <a href="#get-started">Get Started</a>
+            <a href="#get-started" className="rgba-primary-4">Get Started</a>
           </li>
           <li>
-            <a href="https://github.com/ealmansi" target="_blank" rel="noopener noreferrer">Github</a>
+            <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">Github</a>
           </li>
         </ul>
       </nav>
       <style jsx>{`
         div {
-          border-bottom: 1px solid lightgray;
+          border-bottom: 1px solid ${lightColor};
           overflow: auto;
           padding: 20px 10px;
         }
@@ -56,7 +71,6 @@ function TopBar () {
         a {
           padding: 20px 10px;
           text-decoration: none;
-          color: black;
         }
         a:hover {
           text-decoration: underline;
@@ -84,22 +98,44 @@ function TopBar () {
 function Header () {
   return (
     <header>
-      <h1>GraphQLZero</h1>
-      <p>Fake Online GraphQL API for Testing and Prototyping</p>
-      <p>Powered by <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and <a href="https://www.apollographql.com" target="_blank" rel="noopener noreferrer">Apollo</a></p>
+      <h1>GraphQL<span className="rgba-primary-2">Zero</span></h1>
+      <h2>Fake Online GraphQL API for Testing and Prototyping</h2>
+      <p>Zero-Config, No Registration, Compatible with React, Angular, Vue, and more </p>
+      <p>Powered by <a href="https://jsonplaceholder.typicode.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and <a href="https://www.apollographql.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">Apollo</a></p>
       <style jsx>{`
         header {
           padding: 70px 50px;
-          border-bottom: 1px solid lightgray;
+          border-bottom: 1px solid ${lightColor};
           text-align: center;
         }
         header h1 {
-          font-size: 72px;
+          font-size: 64px;
         }
         @media screen and (max-width: 768px) {
           header h1 {
-            font-size: 10vw;
+            font-size: 7vw;
           }
+        }
+        @media screen and (max-width: 480px) {
+          header h1 {
+            font-size: 28px;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          header h2 {
+            font-size: 3.5vw;
+          }
+        }
+        @media screen and (max-width: 480px) {
+          header h2 {
+            font-size: 18px;
+          }
+        }
+        a {
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
         }
       `}</style>
     </header>
@@ -117,8 +153,8 @@ function Main () {
       </div>
       <style jsx>{`
         main {
-          padding: 30px;
-          border-bottom: 1px solid lightgray;
+          padding: 30px 30px 100px 30px;
+          border-bottom: 1px solid ${lightColor};
         }
         main div {
           max-width: 768px;
@@ -179,7 +215,7 @@ function Examples () {
         .examples .panel {
           margin-top: 50px;
           padding: 20px;
-          border: 1px solid lightgray;
+          border: 1px solid ${lightColor};
           -webkit-border-radius: 0.3em;
           -moz-border-radius: 0.3em;
           border-radius: 0.3em;
@@ -283,7 +319,7 @@ function OperationSelect (props: {
           margin: 0;
           padding: 0;
           list-style: none;
-          border: 1px solid lightgray;
+          border: 1px solid ${lightColor};
           -webkit-border-radius: 0.3em;
           -moz-border-radius: 0.3em;
           border-radius: 0.3em;
@@ -295,18 +331,18 @@ function OperationSelect (props: {
           color: black;
           text-decoration: none;
           text-indent: 10px;
-          border-bottom: 1px solid lightgray;
+          border-bottom: 1px solid ${lightColor};
         }
         ul li a:last-of-type {
           border-bottom: none;
         }
         ul li.active a {
-          background: lightgray;
-          box-shadow: inset 2px 0px 0px 0px darkgray;
+          background: ${lightColorTransparent};
+          box-shadow: inset 2px 0px 0px 0px ${darkColor};
         }
         ul li:hover a {
-          background: lightgray;
-          box-shadow: inset 2px 0px 0px 0px darkgray;
+          background: ${lightColorTransparent};
+          box-shadow: inset 2px 0px 0px 0px ${darkColor};
         }
       `}</style>
     </div>
@@ -445,12 +481,15 @@ function Footer () {
   return (
     <footer>
       <p>
-        Source code and CHANGELOG available on GitHub.
+        Source code available on <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">Github</a>.
       </p>
       <style jsx>{`
         footer {
           padding: 50px;
           text-align: center;
+          color: white;
+          background: ${darkColor};
+          box-shadow: inset 0 10px 10px -5px #0d1116;
         }
       `}</style>
     </footer>
