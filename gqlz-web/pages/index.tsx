@@ -48,13 +48,13 @@ function TopBar () {
         <a href="#" className="brand rgba-primary-4">GraphQLZero</a>
         <ul>
           <li>
-            <a href="#examples" className="rgba-primary-4">Examples</a>
+            <a href="#examples" className="examples rgba-primary-4">Examples</a>
           </li>
           <li>
-            <a href="#get-started" className="rgba-primary-4">Get Started</a>
+            <a href="#get-started" className="get-started rgba-primary-4">Get Started</a>
           </li>
           <li>
-            <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">Github</a>
+            <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
         </ul>
       </nav>
@@ -65,7 +65,7 @@ function TopBar () {
           padding: 20px 10px;
         }
         nav {
-          max-width: 768px;
+          max-width: 767px;
           margin: auto;
         }
         a {
@@ -76,7 +76,10 @@ function TopBar () {
           text-decoration: underline;
         }
         @media screen and (max-width: 480px) {
-          nav .brand {
+          nav .examples {
+            display: none;
+          }
+          nav .get-started {
             display: none;
           }
         }
@@ -108,20 +111,25 @@ function Header () {
           border-bottom: 1px solid ${lightColor};
           text-align: center;
         }
+        @media screen and (max-width: 480px) {
+          header {
+            padding: 40px 20px;
+          }
+        }
         header h1 {
           font-size: 64px;
         }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 767px) {
           header h1 {
             font-size: 7vw;
           }
         }
         @media screen and (max-width: 480px) {
           header h1 {
-            font-size: 28px;
+            font-size: 36px;
           }
         }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 767px) {
           header h2 {
             font-size: 3.5vw;
           }
@@ -153,11 +161,11 @@ function Main () {
       </div>
       <style jsx>{`
         main {
-          padding: 30px 30px 100px 30px;
+          padding: 30px 10px 100px 10px;
           border-bottom: 1px solid ${lightColor};
         }
         main div {
-          max-width: 768px;
+          max-width: 767px;
           margin: 0 auto;
         }
       `}</style>
@@ -176,7 +184,7 @@ function Intro () {
       <style jsx>{`
         section {
           margin-bottom: 20px;
-          padding-top: 20px;
+          padding: 20px 10px 0 10px;
         }
       `}</style>
     </section>
@@ -211,6 +219,7 @@ function Examples () {
         .examples {
           margin-bottom: 20px;
           padding-top: 20px;
+          padding: 20px 10px 0 10px;
         }
         .examples .panel {
           margin-top: 50px;
@@ -225,7 +234,7 @@ function Examples () {
           display: inline-block;
           vertical-align: top;
         }
-        @media screen and (max-width: 667px) {
+        @media screen and (max-width: 767px) {
           .examples .panel .top-row .left-column {
             width: 100%;
             display: block;
@@ -236,7 +245,7 @@ function Examples () {
           display: inline-block;
           vertical-align: top;
         }
-        @media screen and (max-width: 667px) {
+        @media screen and (max-width: 767px) {
           .examples .panel .top-row .right-column {
             width: 100%;
             display: block;
@@ -306,12 +315,12 @@ function OperationSelect (props: {
       </ul>
       <style jsx>{`
         .operation-select {
-          margin-top: 40px;
-          padding: 20px;
+          margin: 40px 0 0 20px;
+          padding: 20px 0;
         }
-        @media screen and (max-width: 667px) {
+        @media screen and (max-width: 767px) {
           .operation-select {
-            margin-top: 20px;
+            margin: 20px 0 0 0;
             padding: 0;
           }
         }
@@ -456,6 +465,7 @@ function GetStarted () {
         section {
           margin-bottom: 20px;
           padding-top: 20px;
+          padding: 20px 10px 0 10px;
         }
       `}</style>
     </section>
@@ -471,6 +481,7 @@ function Resources () {
         section {
           margin-bottom: 20px;
           padding-top: 20px;
+          padding: 20px 10px 0 10px;
         }
       `}</style>
     </section>
@@ -481,14 +492,14 @@ function Footer () {
   return (
     <footer>
       <p>
-        Source code available on <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">Github</a>.
+        Source code available on <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-2" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>. License: MIT.
       </p>
       <style jsx>{`
         footer {
           padding: 50px;
           text-align: center;
-          color: white;
-          background: ${darkColor};
+          color: lightgray;
+          background: rgba(98, 0, 66, 1);
           box-shadow: inset 0 10px 10px -5px #0d1116;
         }
       `}</style>
