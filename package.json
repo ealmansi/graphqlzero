@@ -1,13 +1,13 @@
 {
-  "name": "subocean-tiger-graphql",
+  "name": "gqlz-graphql",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "dev": "concurrently 'yarn build:watch' 'cd subocean-tiger-web && now dev'",
-    "deploy": "cd subocean-tiger-web && now"
+    "dev": "concurrently 'yarn build:watch' 'cd gqlz-web && now dev'",
+    "deploy": "cd gqlz-web && now"
   },
   "dependencies": {
     "apollo-server-micro": "^2.9.0",

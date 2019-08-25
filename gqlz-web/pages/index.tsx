@@ -28,24 +28,30 @@ const Index = withApolloClient(
 
 function TopBar () {
   return (
-    <nav>
-      <a href="#" className="brand">SuboceanTiger</a>
-      <ul>
-        <li>
-          <a href="#examples">Examples</a>
-        </li>
-        <li>
-          <a href="#get-started">Get Started</a>
-        </li>
-        <li>
-          <a href="https://github.com/ealmansi" target="_blank" rel="noopener">Github</a>
-        </li>
-      </ul>
+    <div>
+      <nav>
+        <a href="#" className="brand">GraphQLZero</a>
+        <ul>
+          <li>
+            <a href="#examples">Examples</a>
+          </li>
+          <li>
+            <a href="#get-started">Get Started</a>
+          </li>
+          <li>
+            <a href="https://github.com/ealmansi" target="_blank" rel="noopener noreferrer">Github</a>
+          </li>
+        </ul>
+      </nav>
       <style jsx>{`
-        nav {
-          padding: 20px 10px;
+        div {
           border-bottom: 1px solid lightgray;
           overflow: auto;
+          padding: 20px 10px;
+        }
+        nav {
+          max-width: 768px;
+          margin: auto;
         }
         a {
           padding: 20px 10px;
@@ -71,28 +77,28 @@ function TopBar () {
           display: inline-block;
         }
       `}</style>
-    </nav>
+    </div>
   )
 }
 
 function Header () {
   return (
     <header>
-      <h1>SuboceanTiger</h1>
+      <h1>GraphQLZero</h1>
       <p>Fake Online GraphQL API for Testing and Prototyping</p>
-      <p>Powered by JSONPlaceholder</p>
+      <p>Powered by <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and <a href="https://www.apollographql.com" target="_blank" rel="noopener noreferrer">Apollo</a></p>
       <style jsx>{`
         header {
-          padding: 50px;
+          padding: 70px 50px;
           border-bottom: 1px solid lightgray;
           text-align: center;
         }
         header h1 {
-          font-size: 64px;
+          font-size: 72px;
         }
         @media screen and (max-width: 768px) {
           header h1 {
-            font-size: 8vw;
+            font-size: 10vw;
           }
         }
       `}</style>
@@ -128,9 +134,7 @@ function Intro () {
     <section id="intro">
       <h1>Intro</h1>
       <p>
-        SuboceanTiger is a free online GraphQL API that you can use whenever you need some fake data.
-      </p>
-      <p>
+        GraphQLZero is a free online GraphQL API that you can use whenever you need some fake data. <br />
         It's great for tutorials, testing new libraries, sharing code examples, ...
       </p>
       <style jsx>{`

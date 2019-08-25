@@ -1,2 +1,1 @@
-# subocean-tiger
-subocean-tiger
+# GraphQLZero
