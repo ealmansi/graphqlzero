@@ -31,6 +31,8 @@
     "@types/node": "^12.7.2",
     "@types/parse-link-header": "^1.0.0",
     "@types/react": "^16.9.2",
+    "@zeit/next-css": "^1.0.1",
+    "babel-plugin-prismjs": "^1.1.1",
     "now": "^16.1.2",
     "typescript": "^3.5.3"
   }

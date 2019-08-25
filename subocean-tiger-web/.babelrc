@@ -1,0 +1,11 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["prismjs", {
+      "languages": ["graphql", "json"],
+      "plugins": ["copy-to-clipboard"],
+      "theme": "okaidia",
+      "css": true
+    }]
+  ]
+}

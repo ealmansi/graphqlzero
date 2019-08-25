@@ -60,6 +60,10 @@ export function buildServer () {
     typeDefs,
     resolvers,
     introspection: true,
-    playground: true
+    playground: {
+      settings: {
+        'editor.theme': 'light',
+      }
+    }
   });
 }

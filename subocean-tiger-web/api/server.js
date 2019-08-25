@@ -49,7 +49,11 @@ function buildServer() {
         typeDefs: typeDefs,
         resolvers: resolvers,
         introspection: true,
-        playground: true
+        playground: {
+            settings: {
+                'editor.theme': 'light',
+            }
+        }
     });
 }
 exports.buildServer = buildServer;
