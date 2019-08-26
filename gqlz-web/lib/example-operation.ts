@@ -14,45 +14,48 @@ export function getExampleOperations (): Array<ExampleOperation> {
       id: 'get-post',
       label: 'Get a Post',
       operation: 'query',
-      source: unindent(`
-        query getPost($id: ID!) {
-          post(id: $id) {
+      source: `
+        query {
+          post(id: 2) {
             id
             title
+            body
           }
         }
-      `),
+      `,
       variables: {
-        id: 1
       }
     },
     {
       id: 'get-user',
       label: 'Get a User',
       operation: 'query',
-      source: unindent(`
-        query getUser($id: ID!) {
-          user(id: $id) {
+      source: `
+        query {
+          user(id: 1) {
             id
-            name
+            username
+            email
+            address {
+              geo {
+                lat
+                lng
+              }
+            }
           }
         }
-      `),
+      `,
       variables: {
-        id: 1
       }
     },
     {
       id: 'get-user-posts',
-      label: 'Get User Posts',
+      label: 'Get a User\'s Posts',
       operation: 'query',
-      source: unindent(`
-        query getUserPosts(
-          $id: ID!,
-          $options: PageQueryOptions
-        ) {
-          user(id: $id) {
-            posts(options: $options) {
+      source: `
+        query {
+          user(id: 1) {
+            posts {
               data {
                 id
                 title
@@ -60,59 +63,53 @@ export function getExampleOperations (): Array<ExampleOperation> {
             }
           }
         }
-      `),
+      `,
       variables: {
-        id: 1,
-        options: {
-          paginate: {
-            page: 1,
-            limit: 4
+      }
+    },
+    {
+      id: 'get-photos-album',
+      label: 'Get a Photo\'s Album',
+      operation: 'query',
+      source: `
+        query ($id: ID!) {
+          photo(id: $id) {
+            album {
+              id
+              title
+              user {
+                id
+              }
+            }
           }
         }
+      `,
+      variables: {
+        id: 5
       }
     },
     {
       id: 'get-posts',
-      label: 'Get Posts',
+      label: 'Get All Posts (Paginated)',
       operation: 'query',
-      source: unindent(`
-        query getPosts($options: PageQueryOptions) {
+      source: `
+        query ($options: PageQueryOptions) {
           posts(options: $options) {
             data {
               id
               title
             }
-          }
-        }
-      `),
-      variables: {
-        options: {
-          paginate: {
-            page: 1,
-            limit: 4
-          }
-        }
-      }
-    },
-    {
-      id: 'get-comments',
-      label: 'Get Comments',
-      operation: 'query',
-      source: unindent(`
-        query getComments($options: PageQueryOptions) {
-          comments(options: $options) {
-            data {
-              id
-              body
+            meta {
+              totalCount
             }
           }
         }
-      `),
+      `,
       variables: {
         options: {
           paginate: {
             page: 1,
-            limit: 4
+            limit: 5
           }
         }
       }
@@ -121,7 +118,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
       id: 'create-post',
       label: 'Create a Post',
       operation: 'mutation',
-      source: unindent(`
+      source: `
         mutation createPost($input: CreatePostInput!) {
           createPost(input: $input) {
             id
@@ -129,11 +126,11 @@ export function getExampleOperations (): Array<ExampleOperation> {
             body
           }
         }
-      `),
+      `,
       variables: {
         input: {
-          title: 'some title',
-          body: 'some body'
+          title: 'A Very Captivating Post Title',
+          body: 'Some interesting content.'
         }
       }
     },
@@ -141,7 +138,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
       id: 'update-post',
       label: 'Update a Post',
       operation: 'mutation',
-      source: unindent(`
+      source: `
         mutation updatePost(
           $id: ID!,
           $input: UpdatePostInput!
@@ -151,11 +148,11 @@ export function getExampleOperations (): Array<ExampleOperation> {
             body
           }
         }
-      `),
+      `,
       variables: {
-        id: 1,
+        id: 101,
         input: {
-          body: 'some other body'
+          body: 'Some updated content.'
         }
       }
     },
@@ -163,30 +160,18 @@ export function getExampleOperations (): Array<ExampleOperation> {
       id: 'delete-post',
       label: 'Delete a Post',
       operation: 'mutation',
-      source: unindent(`
+      source: `
         mutation deletePost($id: ID!) {
           deletePost(id: $id)
         }
-      `),
+      `,
       variables: {
-        id: 1
+        id: 101
       }
     }
   ]
 }
 
 export function getDefaultExampleOperation () {
-  return 'get-post';
-}
-
-function unindent (text: string) {
-  const lines = text.split('\n').slice(1, -1);
-  let spaces = text.length;
-  for (const line of lines) {
-    let i = 0;
-    for (; i < line.length && line[i] === ' '; ++i) {
-    }
-    spaces = Math.min(spaces, i);
-  }
-  return lines.map(line => line.substr(spaces)).join('\n');
+  return getExampleOperations()[0].id;
 }

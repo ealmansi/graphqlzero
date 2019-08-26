@@ -2,8 +2,8 @@
   "presets": ["next/babel"],
   "plugins": [
     ["prismjs", {
-      "languages": ["graphql", "json"],
-      "plugins": ["copy-to-clipboard"],
+      "languages": ["javascript", "graphql", "json"],
+      "plugins": ["line-numbers", "copy-to-clipboard"],
       "theme": "okaidia",
       "css": true
     }]
