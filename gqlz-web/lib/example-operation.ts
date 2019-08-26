@@ -90,7 +90,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
     },
     {
       id: 'get-posts',
-      label: 'Get All Posts (Paginated)',
+      label: 'Get All Posts',
       operation: 'query',
       source: `
         query ($options: PageQueryOptions) {
