@@ -6,9 +6,13 @@ import React, { useEffect, useState } from 'react';
 import '../css/font.css';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
 
-const lightColor = 'rgba(245,149,214,1)'; // rgba-primary-1
-const lightColorTransparent = 'rgba(245,149,214,0.2)'; // rgba-primary-1
-const darkColor = 'rgba(126,  0, 85,1)'; // rgba-primary-4
+const rgbaPrimary0 = 'rgba(235,  3,160,1)';
+const rgbaPrimary1 = 'rgba(245,149,214,1)';
+const rgbaPrimary1Transparent = 'rgba(245,149,214,0.2)';
+const rgbaPrimary2 = 'rgba(238, 68,183,1)';
+const rgbaPrimary3 = 'rgba(199,  0,134,1)';
+const rgbaPrimary4 = 'rgba(126,  0, 85,1)';
+const rgbaPrimary5 = 'rgba(98,   0, 66,1)';
 
 const Index = withApolloClient(
   function Index () {
@@ -24,17 +28,34 @@ const Index = withApolloClient(
             padding: 0;
             font-family: 'Raleway', sans-serif;
           }
-          .rgba-primary-0 { color: rgba(235,  3,160,1) }	/* Main Primary color */
-          .rgba-primary-1 { color: rgba(245,149,214,1) }
-          .rgba-primary-2 { color: rgba(238, 68,183,1) }
-          .rgba-primary-3 { color: rgba(199,  0,134,1) }
-          .rgba-primary-4 { color: rgba(126,  0, 85,1) }
-
-          .rgba-complement-0 { color: rgba(182,250,  3,1) }	/* Main Complement color */
-          .rgba-complement-1 { color: rgba(225,253,154,1) }
-          .rgba-complement-2 { color: rgba(201,251, 72,1) }
-          .rgba-complement-3 { color: rgba(175,242,  0,1) }
-          .rgba-complement-4 { color: rgba(113,156,  0,1) }
+          .rgba-primary-0 {
+            color: ${rgbaPrimary0};
+          }
+          .rgba-primary-1 {
+            color: ${rgbaPrimary1};
+          }
+          .rgba-primary-2 {
+            color: ${rgbaPrimary2};
+          }
+          .rgba-primary-3 {
+            color: ${rgbaPrimary3};
+          }
+          .rgba-primary-4 {
+            color: ${rgbaPrimary4};
+          }
+          .rgba-primary-5 {
+            color: ${rgbaPrimary5};
+          }
+          pre.word-wrap, code.word-wrap {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+          }
+          div.code-toolbar > .toolbar {
+            margin-right: 5px;
+          }
         `}</style>
       </div>
     );
@@ -60,7 +81,7 @@ function TopBar () {
       </nav>
       <style jsx>{`
         div {
-          border-bottom: 1px solid ${lightColor};
+          border-bottom: 1px solid ${rgbaPrimary1};
           overflow: auto;
           padding: 20px 10px;
         }
@@ -108,7 +129,7 @@ function Header () {
       <style jsx>{`
         header {
           padding: 70px 50px;
-          border-bottom: 1px solid ${lightColor};
+          border-bottom: 1px solid ${rgbaPrimary1};
           text-align: center;
         }
         @media screen and (max-width: 480px) {
@@ -162,7 +183,7 @@ function Main () {
       <style jsx>{`
         main {
           padding: 30px 10px 100px 10px;
-          border-bottom: 1px solid ${lightColor};
+          border-bottom: 1px solid ${rgbaPrimary1};
         }
         main div {
           max-width: 767px;
@@ -224,7 +245,7 @@ function Examples () {
         .examples .panel {
           margin-top: 50px;
           padding: 20px;
-          border: 1px solid ${lightColor};
+          border: 1px solid ${rgbaPrimary1};
           -webkit-border-radius: 0.3em;
           -moz-border-radius: 0.3em;
           border-radius: 0.3em;
@@ -263,7 +284,7 @@ function OperationDisplay (props: { exampleOperation: ExampleOperation; }) {
   return (
     <section>
       <h1>{heading}</h1>
-      <pre>
+      <pre className="word-wrap">
         <PrismCode
           code={source}
           language="graphql"
@@ -281,7 +302,7 @@ function VariablesDisplay (props: { exampleOperation: ExampleOperation; }) {
   return (
     <section>
       <h1>Variables</h1>
-      <pre>
+      <pre className="word-wrap">
         <PrismCode
           code={json}
           language="json"
@@ -328,7 +349,7 @@ function OperationSelect (props: {
           margin: 0;
           padding: 0;
           list-style: none;
-          border: 1px solid ${lightColor};
+          border: 1px solid ${rgbaPrimary1};
           -webkit-border-radius: 0.3em;
           -moz-border-radius: 0.3em;
           border-radius: 0.3em;
@@ -340,18 +361,18 @@ function OperationSelect (props: {
           color: black;
           text-decoration: none;
           text-indent: 10px;
-          border-bottom: 1px solid ${lightColor};
+          border-bottom: 1px solid ${rgbaPrimary1};
         }
         ul li a:last-of-type {
           border-bottom: none;
         }
         ul li.active a {
-          background: ${lightColorTransparent};
-          box-shadow: inset 2px 0px 0px 0px ${darkColor};
+          background: ${rgbaPrimary1Transparent};
+          box-shadow: inset 2px 0px 0px 0px ${rgbaPrimary4};
         }
         ul li:hover a {
-          background: ${lightColorTransparent};
-          box-shadow: inset 2px 0px 0px 0px ${darkColor};
+          background: ${rgbaPrimary1Transparent};
+          box-shadow: inset 2px 0px 0px 0px ${rgbaPrimary4};
         }
       `}</style>
     </div>
@@ -445,7 +466,7 @@ function OperationResultDisplay(props: any) {
     }
   }
   return (
-    <pre>
+    <pre className="word-wrap">
       <PrismCode
         code={content}
         language="json"
@@ -460,7 +481,7 @@ function GetStarted () {
     <section id="get-started">
       <h1>Get Started</h1>
       <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-      <a href="/api">API Playground</a>
+      <a href="/api" target="_blank" rel="noopener noreferrer">API Playground</a>
       <style jsx>{`
         section {
           margin-bottom: 20px;
@@ -499,7 +520,7 @@ function Footer () {
           padding: 50px;
           text-align: center;
           color: lightgray;
-          background: rgba(98, 0, 66, 1);
+          background: ${rgbaPrimary5};
           box-shadow: inset 0 10px 10px -5px #0d1116;
         }
       `}</style>
@@ -547,7 +568,7 @@ class PrismCode extends React.Component<any> {
     const { code, plugins, language } = this.props as any
     return (
       <pre className={!plugins ? "" : plugins.join(" ")}>
-        <code ref={this.ref} className={`language-${language}`}>
+        <code ref={this.ref} className={`word-wrap language-${language}`}>
           {code.trim()}
         </code>
       </pre>
