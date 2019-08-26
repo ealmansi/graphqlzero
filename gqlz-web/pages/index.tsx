@@ -499,7 +499,7 @@ function GetStarted () {
     <section id="get-started">
       <h1>Get Started</h1>
       <p>
-        The easiest way to get started is by visiting the <a href="/api" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>. There, you can see the API's docs and run queries against the real backend.
+        The easiest way to get started is by visiting the <a href="/api" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>. There, you can see the API's docs and run queries against the real backend. Feel free to copy one of the queries in the <a href="#examples" className="examples rgba-primary-4">examples</a> above to get you started.
       </p>
       <div className="window">
         <img src="/static/img/playground-1.png" alt="Playground Query"></img>
@@ -622,7 +622,7 @@ function Schema () {
     <section id="schema">
       <h1>Schema</h1>
       <p>
-        <strong>GraphQL<span className="rgba-primary-3">Zero</span></strong> is powered by <a href="https://jsonplaceholder.typicode.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and therefore the API serves six different types of entities: <em>users</em>, <em>posts</em>, <em>comments</em>, <em>todos</em>, <em>albums</em>, and <em>photos</em>. These entities are additionally related to each other; for example, a user has many posts, a photo belongs to an album, etc.
+        <strong>GraphQL<span className="rgba-primary-3">Zero</span></strong> is powered by <a href="https://jsonplaceholder.typicode.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and serves the same dataset in the form of a GraphQL API. Six different types of entities exist: <em>users</em>, <em>posts</em>, <em>comments</em>, <em>todos</em>, <em>albums</em>, and <em>photos</em>. These entities are also related to each other; for example, a user has many posts, a photo belongs to an album, etc.
       </p>
       <p>
         For more information on how to query different entities, check out the <a href="#examples" className="rgba-primary-4">examples</a> or dive into the full schema in the <a href="/api" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>.

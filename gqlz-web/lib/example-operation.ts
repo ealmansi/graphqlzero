@@ -16,7 +16,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
       operation: 'query',
       source: `
         query {
-          post(id: 2) {
+          post(id: 1) {
             id
             title
             body
@@ -50,7 +50,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
     },
     {
       id: 'get-user-posts',
-      label: 'Get a User\'s Posts',
+      label: 'Get User\'s Posts',
       operation: 'query',
       source: `
         query {
@@ -72,7 +72,9 @@ export function getExampleOperations (): Array<ExampleOperation> {
       label: 'Get a Photo\'s Album',
       operation: 'query',
       source: `
-        query ($id: ID!) {
+        query (
+          $id: ID!
+        ) {
           photo(id: $id) {
             album {
               id
@@ -93,7 +95,9 @@ export function getExampleOperations (): Array<ExampleOperation> {
       label: 'Get All Posts',
       operation: 'query',
       source: `
-        query ($options: PageQueryOptions) {
+        query (
+          $options: PageQueryOptions
+        ) {
           posts(options: $options) {
             data {
               id
@@ -119,7 +123,9 @@ export function getExampleOperations (): Array<ExampleOperation> {
       label: 'Create a Post',
       operation: 'mutation',
       source: `
-        mutation createPost($input: CreatePostInput!) {
+        mutation (
+          $input: CreatePostInput!
+        ) {
           createPost(input: $input) {
             id
             title
@@ -139,7 +145,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
       label: 'Update a Post',
       operation: 'mutation',
       source: `
-        mutation updatePost(
+        mutation (
           $id: ID!,
           $input: UpdatePostInput!
         ) {
@@ -150,7 +156,7 @@ export function getExampleOperations (): Array<ExampleOperation> {
         }
       `,
       variables: {
-        id: 101,
+        id: 1,
         input: {
           body: 'Some updated content.'
         }
@@ -161,7 +167,9 @@ export function getExampleOperations (): Array<ExampleOperation> {
       label: 'Delete a Post',
       operation: 'mutation',
       source: `
-        mutation deletePost($id: ID!) {
+        mutation (
+          $id: ID!
+        ) {
           deletePost(id: $id)
         }
       `,
