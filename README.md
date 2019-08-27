@@ -2,15 +2,21 @@
 
 ## A Simple, Zero-Config Fake GraphQL API.
 
-[GraphQLZero](https://graphqlzero.almansi.me) is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app. It is inspired and powered by JSONPlaceholder, serving the same dataset but in the form of a GraphQL server. You'll find it useful for learning more about GraphQL, writing tutorials, testing new libraries, and more.
+[GraphQLZero](https://graphqlzero.almansi.me) is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app. It is inspired and powered by [JSONPlaceholder](https://jsonplaceholder.typicode.com/), serving the same dataset but in the form of a GraphQL server. You'll find it useful for learning more about GraphQL, writing tutorials, testing new libraries, and more.
 
 ## Get Started
 
 First, check out the [example queries and mutations](https://graphqlzero.almansi.me/#examples) that you can run right from our website. The easiest way to get started is by visiting the [GraphQL API Playground](https://graphqlzero.almansi.me/api), where you can see the API's docs and run queries against the real backend.
 
-![GraphQL Playground: Query Execution](gqlz-web/static/img/playground-1.png "GraphQL Playground: Query Execution.")
+<div style="text-align: center; margin: 50px 0;">
+  <img src="gqlz-web/static/img/playground-1.png" alt="GraphQL Playground: Query Execution" style="border-radius: 0.3em;"/>
+  <p>1) GraphQL Playground: Query Execution.</p>
+</div>
 
-![GraphQL Playground: API Docs](gqlz-web/static/img/playground-2.png "GraphQL Playground: API Docs.")
+<div style="text-align: center; margin: 50px 0;">
+  <img src="gqlz-web/static/img/playground-2.png" alt="GraphQL Playground: API Docs" style="border-radius: 0.3em;"/>
+  <p>2) GraphQL Playground: API Docs.</p>
+</div>
 
 ## Schema
 
