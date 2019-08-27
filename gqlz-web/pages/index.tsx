@@ -38,6 +38,7 @@ const Index = withApolloClient(
           <meta name="og:image" content="https://graphqlzero.almansi.me/static/graphql-logo.png"/>
           <meta name="og:site_name" content="GraphQLZero"/>
           <meta name="og:description" content="A Simple, Zero-Config Fake GraphQL API."/>
+          <meta name="google-site-verification" content="UCPORh5hdVtXlGIwXOH4DSeRlGLPicaYtUNeHTqg8kA" />
         </Head>
         <TopBar />
         <Header />
