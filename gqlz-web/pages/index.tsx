@@ -5,6 +5,7 @@ import Head from 'next/head';
 import React, { ReactElement, useEffect, useState } from 'react';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
 import { font } from '../lib/font';
+import { okaidia } from '../lib/okaidia';
 import { omitTypename } from '../lib/omit-typename';
 import { PrismCode } from '../lib/prism-code';
 import { unindent } from '../lib/unindent';
@@ -82,6 +83,7 @@ const Index = withApolloClient(
           }
         `}</style>
         <style jsx global>{font}</style>
+        <style jsx global>{okaidia}</style>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css';
 
-export const font = css`
+export const font = css.global`
   /* latin */
   @font-face {
     font-family: 'Raleway';
