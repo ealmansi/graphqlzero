@@ -24,6 +24,8 @@ const Index = withApolloClient(
       <div>
         <Head>
           <title>GraphQLZero: A Simple, Zero-Config Fake GraphQL API.</title>
+          <meta name="description" content="GraphQLZero: A Simple, Zero-Config Fake GraphQL API."/>
+          <link rel="canonical" href="https://graphqlzero.almansi.me/"> /></link>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
