@@ -3,8 +3,8 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import Head from 'next/head';
 import React, { ReactElement, useEffect, useState } from 'react';
-import '../css/font.css';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
+import { font } from '../lib/font';
 import { omitTypename } from '../lib/omit-typename';
 import { PrismCode } from '../lib/prism-code';
 import { unindent } from '../lib/unindent';
@@ -81,6 +81,7 @@ const Index = withApolloClient(
             margin-right: 5px;
           }
         `}</style>
+        <style jsx global>{font}</style>
       </div>
     );
   }

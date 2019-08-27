@@ -12,6 +12,7 @@
     "@apollo/react-components": "^3.0.1",
     "@apollo/react-hooks": "^3.0.1",
     "@types/prismjs": "^1.16.0",
+    "@types/styled-jsx": "^2.2.8",
     "apollo-boost": "^0.4.4",
     "apollo-cache": "^1.3.2",
     "apollo-client": "^2.6.4",
@@ -24,7 +25,8 @@
     "parse-link-header": "^1.0.1",
     "prismjs": "^1.17.1",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "styled-jsx": "^3.2.1"
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.35",
