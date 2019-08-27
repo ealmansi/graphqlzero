@@ -40,7 +40,7 @@ export interface Post {
   title: string;
   body: string;
   userId: string;
-};
+}
 
 export interface CreatePostInput {
   title: string;

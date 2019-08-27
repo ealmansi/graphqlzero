@@ -42,7 +42,7 @@ export interface Comment {
   email: string;
   body: string;
   postId: string;
-};
+}
 
 export interface CreateCommentInput {
   name: string;

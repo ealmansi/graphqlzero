@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint src/ --ext ts",
+    "test": "yarn lint",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "dev": "concurrently 'yarn build:watch' 'cd gqlz-web && now dev'",
@@ -18,7 +20,10 @@
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.35",
     "@types/parse-link-header": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "concurrently": "^4.1.2",
+    "eslint": "^6.2.2",
     "typescript": "^3.5.3"
   }
 }

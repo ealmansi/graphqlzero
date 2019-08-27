@@ -38,7 +38,7 @@ export interface Todo {
   title: string;
   completed: string;
   userId: string;
-};
+}
 
 export interface CreateTodoInput {
   title: string;

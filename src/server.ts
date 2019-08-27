@@ -7,7 +7,7 @@ import { resolvers as postResolvers, typeDefs as postTypeDefs } from './models/p
 import { resolvers as todoResolvers, typeDefs as todoTypeDefs } from './models/todo';
 import { resolvers as userResolvers, typeDefs as userTypeDefs } from './models/user';
 
-export function buildServer () {
+export function buildApolloServer (): ApolloServer {
   const baseTypeDefs = gql`
     type Query {
       _: Int

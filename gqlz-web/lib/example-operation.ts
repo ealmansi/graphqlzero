@@ -3,7 +3,7 @@ export default interface ExampleOperation {
   label: string;
   operation: 'query' | 'mutation';
   source: string;
-  variables?: {
+  variables: {
     [key: string]: any;
   };
 }
@@ -181,5 +181,5 @@ export function getExampleOperations (): Array<ExampleOperation> {
 }
 
 export function getDefaultExampleOperation () {
-  return getExampleOperations()[0].id;
+  return getExampleOperations()[0];
 }

@@ -42,7 +42,7 @@ export interface Photo {
   title: string;
   url: string;
   thumbnailUrl: string;
-};
+}
 
 export interface CreatePhotoInput {
   title: string;

@@ -38,17 +38,17 @@ export interface Album {
   id: string;
   title: string;
   userId: string;
-};
+}
 
 export interface CreateAlbumInput {
   title: string;
   userId: string;
-};
+}
 
 export interface UpdateAlbumInput {
   title?: string;
   userId?: string;
-};
+}
 
 export async function fetchAlbums (options?: PageQueryOptions): Promise<Page<Album>> {
   return fetchPage<Album>('/albums', options);

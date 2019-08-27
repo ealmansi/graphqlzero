@@ -1,21 +1,24 @@
-import { ApolloProvider, useMutation, useQuery } from '@apollo/react-hooks';
-import ApolloClient, { gql } from 'apollo-boost';
-import fetch from 'isomorphic-fetch';
-import Prism from "prismjs";
-import React, { useEffect, useState } from 'react';
+import { MutationResult, QueryResult } from '@apollo/react-common';
+import { useMutation, useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+import React, { ReactElement, useEffect, useState } from 'react';
 import '../css/font.css';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
+import { omitTypename } from '../lib/omit-typename';
+import { PrismCode } from '../lib/prism-code';
+import { unindent } from '../lib/unindent';
+import { withApolloClient } from '../lib/with-apollo-client';
 
-const rgbaPrimary0 = 'rgba(235,  3,160,1)';
-const rgbaPrimary1 = 'rgba(245,149,214,1)';
-const rgbaPrimary1Transparent = 'rgba(245,149,214,0.2)';
-const rgbaPrimary2 = 'rgba(238, 68,183,1)';
-const rgbaPrimary3 = 'rgba(199,  0,134,1)';
-const rgbaPrimary4 = 'rgba(126,  0, 85,1)';
-const rgbaPrimary5 = 'rgba(98,   0, 66,1)';
+const PRIMARY_COLOR_0 = 'rgba(235,  3,160,1)';
+const PRIMARY_COLOR_1 = 'rgba(245,149,214,1)';
+const PRIMARY_COLOR_1_ALPHA = 'rgba(245,149,214,0.2)';
+const PRIMARY_COLOR_2 = 'rgba(238, 68,183,1)';
+const PRIMARY_COLOR_3 = 'rgba(199,  0,134,1)';
+const PRIMARY_COLOR_4 = 'rgba(126,  0, 85,1)';
+const PRIMARY_COLOR_5 = 'rgba(98,   0, 66,1)';
 
 const Index = withApolloClient(
-  function Index () {
+  function Index (): ReactElement {
     return (
       <div>
         <TopBar />
@@ -29,22 +32,22 @@ const Index = withApolloClient(
             font-family: 'Raleway', sans-serif;
           }
           .rgba-primary-0 {
-            color: ${rgbaPrimary0};
+            color: ${PRIMARY_COLOR_0};
           }
           .rgba-primary-1 {
-            color: ${rgbaPrimary1};
+            color: ${PRIMARY_COLOR_1};
           }
           .rgba-primary-2 {
-            color: ${rgbaPrimary2};
+            color: ${PRIMARY_COLOR_2};
           }
           .rgba-primary-3 {
-            color: ${rgbaPrimary3};
+            color: ${PRIMARY_COLOR_3};
           }
           .rgba-primary-4 {
-            color: ${rgbaPrimary4};
+            color: ${PRIMARY_COLOR_4};
           }
           .rgba-primary-5 {
-            color: ${rgbaPrimary5};
+            color: ${PRIMARY_COLOR_5};
           }
           pre.word-wrap, code.word-wrap {
             white-space: pre-wrap!important;
@@ -62,7 +65,7 @@ const Index = withApolloClient(
   }
 );
 
-function TopBar () {
+function TopBar (): ReactElement {
   return (
     <div>
       <nav>
@@ -81,7 +84,7 @@ function TopBar () {
       </nav>
       <style jsx>{`
         div {
-          border-bottom: 1px solid ${rgbaPrimary1};
+          border-bottom: 1px solid ${PRIMARY_COLOR_1};
           overflow: auto;
           padding: 20px 10px;
         }
@@ -122,7 +125,7 @@ function TopBar () {
   )
 }
 
-function Header () {
+function Header (): ReactElement {
   return (
     <header>
       <h1>GraphQL<span className="rgba-primary-3">Zero</span></h1>
@@ -132,7 +135,7 @@ function Header () {
       <style jsx>{`
         header {
           padding: 70px 50px;
-          border-bottom: 1px solid ${rgbaPrimary1};
+          border-bottom: 1px solid ${PRIMARY_COLOR_1};
           text-align: center;
         }
         @media screen and (max-width: 480px) {
@@ -174,7 +177,7 @@ function Header () {
   )
 }
 
-function Main () {
+function Main (): ReactElement {
   return (
     <main>
       <div>
@@ -186,7 +189,7 @@ function Main () {
       <style jsx>{`
         main {
           padding: 30px 10px 100px 10px;
-          border-bottom: 1px solid ${rgbaPrimary1};
+          border-bottom: 1px solid ${PRIMARY_COLOR_1};
         }
         main div {
           max-width: 767px;
@@ -197,7 +200,7 @@ function Main () {
   )
 }
 
-function Intro () {
+function Intro (): ReactElement {
   return (
     <section id="intro">
       <h1>Intro</h1>
@@ -217,18 +220,22 @@ function Intro () {
   )
 }
 
-function Examples () {
-  const [activeOperationId, setActiveOperationId] = useState(getDefaultExampleOperation());
+function Examples (): ReactElement {
+  const defaultOperation = getDefaultExampleOperation();
+  const [activeOperationId, setActiveOperationId] = useState(defaultOperation.id);
   let activeOperation = getExampleOperations().find((exampleOperation) => {
     return exampleOperation.id === activeOperationId;
   });
+  if (activeOperation === undefined) {
+    activeOperation = defaultOperation;
+  }
   return (
     <section id="examples" className="examples">
       <h1>Examples</h1>
       <p>
         Below you can try out a few example queries and mutations for common use cases like getting a list of resources, retrieving a specific entity, or exploring nested relationships.
       </p>
-      <div id="panel" className="panel">
+      <div id="example-top" className="example-top">
         <div className="top-row">
           <div className="left-column">
             <OperationDisplay exampleOperation={activeOperation}/>
@@ -244,7 +251,7 @@ function Examples () {
         <ResultDisplay exampleOperation={activeOperation}/>
       </div>
       <p>
-        For more details about the different entities, check out the <a href="#schema" className="rgba-primary-2">Schema</a>.
+        For more details about the different entities, check out the <a href="#schema"  className="rgba-primary-2">Schema</a>.
       </p>
       <style jsx>{`
         .examples {
@@ -254,32 +261,32 @@ function Examples () {
         .examples p {
           text-align: justify;
         }
-        .examples .panel {
+        .examples .example-top {
           margin: 50px 0;
           padding: 20px;
-          border: 1px solid ${rgbaPrimary1};
+          border: 1px solid ${PRIMARY_COLOR_1};
           -webkit-border-radius: 0.3em;
           -moz-border-radius: 0.3em;
           border-radius: 0.3em;
         }
-        .examples .panel .top-row .left-column {
+        .examples .example-top .top-row .left-column {
           width: calc(100% - 250px);
           display: inline-block;
           vertical-align: top;
         }
         @media screen and (max-width: 767px) {
-          .examples .panel .top-row .left-column {
+          .examples .example-top .top-row .left-column {
             width: 100%;
             display: block;
           }
         }
-        .examples .panel .top-row .right-column {
+        .examples .example-top .top-row .right-column {
           width: 250px;
           display: inline-block;
           vertical-align: top;
         }
         @media screen and (max-width: 767px) {
-          .examples .panel .top-row .right-column {
+          .examples .example-top .top-row .right-column {
             width: 100%;
             display: block;
           }
@@ -289,7 +296,11 @@ function Examples () {
   )
 }
 
-function OperationDisplay (props: { exampleOperation: ExampleOperation; }) {
+interface OperationDisplayProps {
+  exampleOperation: ExampleOperation;
+}
+
+function OperationDisplay (props: OperationDisplayProps): ReactElement {
   const { exampleOperation } = props;
   const { operation, source } = exampleOperation;
   const heading = operation === 'query' ? 'Query' : 'Mutation';
@@ -307,7 +318,11 @@ function OperationDisplay (props: { exampleOperation: ExampleOperation; }) {
   )
 }
 
-function VariablesDisplay (props: { exampleOperation: ExampleOperation; }) {
+interface VariablesDisplayProps {
+  exampleOperation: ExampleOperation;
+}
+
+function VariablesDisplay (props: VariablesDisplayProps): ReactElement {
   const { exampleOperation } = props;
   const { variables } = exampleOperation;
   const json = JSON.stringify(variables, null, 2);
@@ -325,10 +340,12 @@ function VariablesDisplay (props: { exampleOperation: ExampleOperation; }) {
   )
 }
 
-function OperationSelect (props: {
-  activeOperationId: string,
-  setActiveOperationId: (string) => void;
-}) {
+interface OperationSelectProps {
+  activeOperationId: string;
+  setActiveOperationId: (id: string) => void;
+}
+
+function OperationSelect (props: OperationSelectProps): ReactElement {
   const { activeOperationId, setActiveOperationId } = props;
   return (
     <div className="operation-select">
@@ -340,7 +357,7 @@ function OperationSelect (props: {
             const onClick = () => setActiveOperationId(id);
             return (
               <li key={id} className={className}>
-                <a href="#panel" onClick={onClick}>{label}</a>
+                <a href="#example-top" onClick={onClick}>{label}</a>
               </li>
             );
           })
@@ -361,7 +378,7 @@ function OperationSelect (props: {
           margin: 0;
           padding: 0;
           list-style: none;
-          border: 1px solid ${rgbaPrimary1};
+          border: 1px solid ${PRIMARY_COLOR_1};
           -webkit-border-radius: 0.3em;
           -moz-border-radius: 0.3em;
           border-radius: 0.3em;
@@ -373,25 +390,29 @@ function OperationSelect (props: {
           color: black;
           text-decoration: none;
           text-indent: 10px;
-          border-bottom: 1px solid ${rgbaPrimary1};
+          border-bottom: 1px solid ${PRIMARY_COLOR_1};
         }
         ul li a:last-of-type {
           border-bottom: none;
         }
         ul li.active a {
-          background: ${rgbaPrimary1Transparent};
-          box-shadow: inset 2px 0px 0px 0px ${rgbaPrimary4};
+          background: ${PRIMARY_COLOR_1_ALPHA};
+          box-shadow: inset 2px 0px 0px 0px ${PRIMARY_COLOR_4};
         }
         ul li:hover a {
-          background: ${rgbaPrimary1Transparent};
-          box-shadow: inset 2px 0px 0px 0px ${rgbaPrimary4};
+          background: ${PRIMARY_COLOR_1_ALPHA};
+          box-shadow: inset 2px 0px 0px 0px ${PRIMARY_COLOR_4};
         }
       `}</style>
     </div>
   );
 }
 
-function ResultDisplay (props: { exampleOperation: ExampleOperation; }) {
+interface ResultDisplayProps {
+  exampleOperation: ExampleOperation;
+}
+
+function ResultDisplay (props: ResultDisplayProps): ReactElement {
   const { exampleOperation } = props;
   const { operation, source, variables } = exampleOperation;
   return (
@@ -414,7 +435,14 @@ function ResultDisplay (props: { exampleOperation: ExampleOperation; }) {
   );
 }
 
-function QueryResultDisplay (props: any) {
+interface QueryResultDisplayProps {
+  query: ReturnType<typeof gql>;
+  variables: {
+    [key: string]: any;
+  };
+}
+
+function QueryResultDisplay (props: QueryResultDisplayProps): ReactElement {
   const { query, variables } = props;
   const result = useQuery(
     query,
@@ -426,7 +454,14 @@ function QueryResultDisplay (props: any) {
   return <OperationResultDisplay result={result}/>;
 }
 
-function MutationResultDisplay (props: any) {
+interface MutationResultDisplayProps {
+  mutation: ReturnType<typeof gql>;
+  variables: {
+    [key: string]: any;
+  };
+}
+
+function MutationResultDisplay (props: MutationResultDisplayProps): ReactElement {
   const { mutation, variables } = props;
   const [runMutation, result] = useMutation(
     mutation,
@@ -441,12 +476,16 @@ function MutationResultDisplay (props: any) {
   return <OperationResultDisplay result={result}/>;
 }
 
-function OperationResultDisplay(props: any) {
+interface OperationResultDisplayProps {
+  result: QueryResult | MutationResult;
+}
+
+function OperationResultDisplay(props: OperationResultDisplayProps): ReactElement {
   const { result } = props;
   const { called, loading, error, data } = result;
   const [loadingDots, setLoadingDots] = useState(1);
   useEffect(() => {
-    let timer = null;
+    let timer: ReturnType<typeof setTimeout> | null = null;
     if (loading) {
       timer = setTimeout(() => {
         const nextLoadingDots = ((loadingDots + 1) % 3) + 1;
@@ -494,12 +533,12 @@ function OperationResultDisplay(props: any) {
   );
 }
 
-function GetStarted () {
+function GetStarted (): ReactElement {
   return (
     <section id="get-started">
       <h1>Get Started</h1>
       <p>
-        The easiest way to get started is by visiting the <a href="/api" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>. There, you can see the API's docs and run queries against the real backend. Feel free to copy one of the queries in the <a href="#examples" className="examples rgba-primary-4">examples</a> above to get you started.
+        The easiest way to get started is by visiting the <a href="/api"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>. There, you can see the API's docs and run queries against the real backend. Feel free to copy one of the queries in the <a href="#examples"  className="examples rgba-primary-4">examples</a> above to get you started.
       </p>
       <div className="window">
         <img src="/static/img/playground-1.png" alt="Playground Query"></img>
@@ -538,7 +577,7 @@ function GetStarted () {
         />
       </pre>
       <p>
-        A GraphQL client will be necessary for anything beyond the basics. For example, if you're using JavaScript, <a href="https://www.apollographql.com/docs/react" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">Apollo Client</a> can come in handy. The following code will get your client set up and issue a simple query.
+        A GraphQL client will be necessary for anything beyond the basics. For example, if you're using JavaScript, <a href="https://www.apollographql.com/docs/react"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer">Apollo Client</a> can come in handy. The following code will get your client set up and issue a simple query.
       </p>
       <pre className="word-wrap">
         <PrismCode
@@ -617,7 +656,7 @@ function GetStarted () {
   )
 }
 
-function Schema () {
+function Schema (): ReactElement {
   return (
     <section id="schema">
       <h1>Schema</h1>
@@ -637,96 +676,23 @@ function Schema () {
   )
 }
 
-function Footer () {
+function Footer (): ReactElement {
   return (
     <footer>
       <p>
-        Source code available on <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-2" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>. License: MIT.
+        Source code available on <a href="https://github.com/ealmansi/gqlz"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>. License: MIT.
       </p>
       <style jsx>{`
         footer {
           padding: 50px;
           text-align: center;
           color: lightgray;
-          background: ${rgbaPrimary5};
+          background: ${PRIMARY_COLOR_5};
           box-shadow: inset 0 10px 10px -5px #0d1116;
         }
       `}</style>
     </footer>
   )
-}
-
-function withApolloClient (Component: React.ComponentType) {
-  const client = new ApolloClient({
-    uri: '/api',
-    fetch
-  });
-	return class extends React.Component {
-    render () {
-      return (
-        <ApolloProvider client={client}>
-          <Component { ...this.props }/>
-        </ApolloProvider>
-      );
-    }
-	}
-}
-
-/**
- * Source: https://pathof.dev/blog/code-highlighting-in-react-using-prismjs.
- */
-class PrismCode extends React.Component<any> {
-  private ref: React.RefObject<HTMLInputElement>;
-  constructor(props: any) {
-    super(props)
-    this.ref = React.createRef()
-  }
-  componentDidMount() {
-    this.highlight()
-  }
-  componentDidUpdate() {
-    this.highlight()
-  }
-  highlight = () => {
-    if (this.ref && this.ref.current) {
-      Prism.highlightElement(this.ref.current)
-    }
-  }
-  render() {
-    const { code, plugins, language } = this.props as any
-    return (
-      <pre className={!plugins ? "" : plugins.join(" ")}>
-        <code ref={this.ref} className={`word-wrap language-${language}`}>
-          {code}
-        </code>
-      </pre>
-    )
-  }
-}
-
-function unindent (text: string) {
-  let lines = text.split('\n');
-  if (lines.length < 3) {
-    return text;
-  }
-  lines = lines.slice(1, -1);
-  let spaces = text.length;
-  for (const line of lines) {
-    let i = 0;
-    for (; i < line.length && line[i] === ' '; ++i) {
-    }
-    if (i < line.length) {
-      spaces = Math.min(spaces, i);
-    }
-  }
-  return lines.map(line => line.substr(spaces)).join('\n');
-}
-
-function omitTypename (key: string, value: any) {
-  if (key === '__typename') {
-    return undefined;
-  }
-  return value;
 }
 
 export default Index;

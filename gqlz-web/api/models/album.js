@@ -43,9 +43,6 @@ var apollo_server_micro_1 = require("apollo-server-micro");
 var user_1 = require("./user");
 var json_placeholder_1 = require("./util/json-placeholder");
 exports.typeDefs = apollo_server_micro_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  extend type Query {\n    albums(options: PageQueryOptions): AlbumsPage\n    album(id: ID!): Album\n  }\n\n  extend type Mutation {\n    createAlbum(input: CreateAlbumInput!): Album\n    updateAlbum(id: ID!, input: UpdateAlbumInput!): Album\n    deleteAlbum(id: ID!): Boolean\n  }\n\n  type Album {\n    id: ID\n    title: String\n    user: User\n    photos(options: PageQueryOptions): PhotosPage\n  }\n\n  input CreateAlbumInput {\n    title: String!\n    userId: ID!\n  }\n\n  input UpdateAlbumInput {\n    title: String\n    userId: ID\n  }\n"], ["\n  extend type Query {\n    albums(options: PageQueryOptions): AlbumsPage\n    album(id: ID!): Album\n  }\n\n  extend type Mutation {\n    createAlbum(input: CreateAlbumInput!): Album\n    updateAlbum(id: ID!, input: UpdateAlbumInput!): Album\n    deleteAlbum(id: ID!): Boolean\n  }\n\n  type Album {\n    id: ID\n    title: String\n    user: User\n    photos(options: PageQueryOptions): PhotosPage\n  }\n\n  input CreateAlbumInput {\n    title: String!\n    userId: ID!\n  }\n\n  input UpdateAlbumInput {\n    title: String\n    userId: ID\n  }\n"])));
-;
-;
-;
 function fetchAlbums(options) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

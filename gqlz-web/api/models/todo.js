@@ -43,7 +43,6 @@ var apollo_server_micro_1 = require("apollo-server-micro");
 var user_1 = require("./user");
 var json_placeholder_1 = require("./util/json-placeholder");
 exports.typeDefs = apollo_server_micro_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  extend type Query {\n    todos(options: PageQueryOptions): TodosPage\n    todo(id: ID!): Todo\n  }\n\n  extend type Mutation {\n    createTodo(input: CreateTodoInput!): Todo\n    updateTodo(id: ID!, input: UpdateTodoInput!): Todo\n    deleteTodo(id: ID!): Boolean\n  }\n\n  type Todo {\n    id: ID\n    title: String\n    completed: Boolean\n    user: User\n  }\n\n  input CreateTodoInput {\n    title: String!\n    completed: Boolean!\n  }\n\n  input UpdateTodoInput {\n    title: String\n    completed: Boolean\n  }\n"], ["\n  extend type Query {\n    todos(options: PageQueryOptions): TodosPage\n    todo(id: ID!): Todo\n  }\n\n  extend type Mutation {\n    createTodo(input: CreateTodoInput!): Todo\n    updateTodo(id: ID!, input: UpdateTodoInput!): Todo\n    deleteTodo(id: ID!): Boolean\n  }\n\n  type Todo {\n    id: ID\n    title: String\n    completed: Boolean\n    user: User\n  }\n\n  input CreateTodoInput {\n    title: String!\n    completed: Boolean!\n  }\n\n  input UpdateTodoInput {\n    title: String\n    completed: Boolean\n  }\n"])));
-;
 function fetchTodos(options) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

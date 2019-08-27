@@ -23,7 +23,7 @@ var photo_1 = require("./models/photo");
 var post_1 = require("./models/post");
 var todo_1 = require("./models/todo");
 var user_1 = require("./models/user");
-function buildServer() {
+function buildApolloServer() {
     var baseTypeDefs = apollo_server_micro_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    type Query {\n      _: Int\n    }\n\n    type Mutation {\n      _: Int\n    }\n  "], ["\n    type Query {\n      _: Int\n    }\n\n    type Mutation {\n      _: Int\n    }\n  "])));
     var typeDefs = [
         baseTypeDefs,
@@ -56,5 +56,5 @@ function buildServer() {
         }
     });
 }
-exports.buildServer = buildServer;
+exports.buildApolloServer = buildApolloServer;
 var templateObject_1;

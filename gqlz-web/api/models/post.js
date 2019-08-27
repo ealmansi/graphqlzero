@@ -43,7 +43,6 @@ var apollo_server_micro_1 = require("apollo-server-micro");
 var user_1 = require("./user");
 var json_placeholder_1 = require("./util/json-placeholder");
 exports.typeDefs = apollo_server_micro_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  extend type Query {\n    posts(options: PageQueryOptions): PostsPage\n    post(id: ID!): Post\n  }\n\n  extend type Mutation {\n    createPost(input: CreatePostInput!): Post\n    updatePost(id: ID!, input: UpdatePostInput!): Post\n    deletePost(id: ID!): Boolean\n  }\n\n  type Post {\n    id: ID\n    title: String\n    body: String\n    user: User\n    comments(options: PageQueryOptions): CommentsPage\n  }\n\n  input CreatePostInput {\n    title: String!\n    body: String!\n  }\n\n  input UpdatePostInput {\n    title: String\n    body: String\n  }\n"], ["\n  extend type Query {\n    posts(options: PageQueryOptions): PostsPage\n    post(id: ID!): Post\n  }\n\n  extend type Mutation {\n    createPost(input: CreatePostInput!): Post\n    updatePost(id: ID!, input: UpdatePostInput!): Post\n    deletePost(id: ID!): Boolean\n  }\n\n  type Post {\n    id: ID\n    title: String\n    body: String\n    user: User\n    comments(options: PageQueryOptions): CommentsPage\n  }\n\n  input CreatePostInput {\n    title: String!\n    body: String!\n  }\n\n  input UpdatePostInput {\n    title: String\n    body: String\n  }\n"])));
-;
 function fetchPosts(options) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

@@ -1,6 +1,6 @@
-import { buildServer } from './server';
+import { buildApolloServer } from './server';
 
-const server = buildServer();
+const server = buildApolloServer();
 
 const handler = server.createHandler({
   path: '/api'
