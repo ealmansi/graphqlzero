@@ -1,6 +1,7 @@
 import { MutationResult, QueryResult } from '@apollo/react-common';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import Head from 'next/head';
 import React, { ReactElement, useEffect, useState } from 'react';
 import '../css/font.css';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
@@ -21,6 +22,23 @@ const Index = withApolloClient(
   function Index (): ReactElement {
     return (
       <div>
+        <Head>
+          <title>GraphQLZero: A Simple, Zero-Config Fake GraphQL API.</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
+          <link rel="manifest" href="/static/site.webmanifest" />
+          <link rel="mask-icon" href="/static/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta name="msapplication-TileColor" content="#da532c" />
+          <meta name="theme-color" content="#ffffff"></meta>
+          <meta name="og:title" content="GraphQLZero"/>
+          <meta name="og:type" content="software"/>
+          <meta name="og:url" content="https://graphqlzero.almansi.me/"/>
+          <meta name="og:image" content="https://graphqlzero.almansi.me/static/favicon.ico"/>
+          <meta name="og:site_name" content="GraphQLZero"/>
+          <meta name="og:description" content="A Simple, Zero-Config Fake GraphQL API."/>
+        </Head>
         <TopBar />
         <Header />
         <Main />

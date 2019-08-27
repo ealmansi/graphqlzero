@@ -34,6 +34,7 @@
     "@zeit/next-css": "^1.0.1",
     "babel-plugin-prismjs": "^1.1.1",
     "now": "^16.1.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.0"
   }
 }
