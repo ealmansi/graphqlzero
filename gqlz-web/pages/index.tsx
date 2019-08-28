@@ -1,9 +1,10 @@
 import { MutationResult, QueryResult } from '@apollo/react-common';
 import { useMutation, useQuery } from '@apollo/react-hooks';
+import * as Sentry from '@sentry/browser';
 import { gql } from 'apollo-boost';
-import ReactGA from 'react-ga';
 import Head from 'next/head';
 import React, { ReactElement, useEffect, useState } from 'react';
+import ReactGA from 'react-ga';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
 import { font } from '../lib/font';
 import { okaidia } from '../lib/okaidia';
@@ -25,6 +26,7 @@ const Index = withApolloClient(
     if (process.browser) {
       ReactGA.initialize('UA-146616171-1');
       ReactGA.pageview(window.location.pathname + window.location.search);
+      Sentry.init({ dsn: 'https://96d4d49623e847e1801d05f88eaa65bc@sentry.io/1544546' });
     }
     return (
       <div>
