@@ -32,7 +32,7 @@ const Index = withApolloClient(
       <div>
         <Head>
           <title>GraphQLZero: A Simple, Zero-Config Fake GraphQL API.</title>
-          <meta name="description" content="GraphQLZero: A Simple, Zero-Config Fake GraphQL API."/>
+          <meta name="description" content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."/>
           <link rel="canonical" href="https://graphqlzero.almansi.me/" />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
@@ -47,7 +47,7 @@ const Index = withApolloClient(
           <meta name="og:url" content="https://graphqlzero.almansi.me/"/>
           <meta name="og:image" content="https://graphqlzero.almansi.me/static/graphql-image.jpg"/>
           <meta name="og:site_name" content="GraphQLZero"/>
-          <meta name="og:description" content="A Simple, Zero-Config Fake GraphQL API."/>
+          <meta name="og:description" content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."/>
           <meta name="google-site-verification" content="UCPORh5hdVtXlGIwXOH4DSeRlGLPicaYtUNeHTqg8kA" />
         </Head>
         <TopBar />
