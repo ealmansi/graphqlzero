@@ -1,6 +1,7 @@
 import { MutationResult, QueryResult } from '@apollo/react-common';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import ReactGA from 'react-ga';
 import Head from 'next/head';
 import React, { ReactElement, useEffect, useState } from 'react';
 import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
@@ -21,6 +22,10 @@ const PRIMARY_COLOR_5 = 'rgba(98,   0, 66,1)';
 
 const Index = withApolloClient(
   function Index (): ReactElement {
+    if (process.browser) {
+      ReactGA.initialize('UA-146616171-1');
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
     return (
       <div>
         <Head>
