@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "apollo-server-micro": "^2.9.0",
-    "graphql": "^14.5.3",
+    "graphql": "^14.5.4",
     "isomorphic-fetch": "^2.2.1",
     "parse-link-header": "^1.0.1"
   },
