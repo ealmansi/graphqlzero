@@ -15,10 +15,12 @@
     "apollo-server-micro": "^2.9.0",
     "graphql": "^14.5.4",
     "isomorphic-fetch": "^2.2.1",
+    "micro-cors": "^0.1.1",
     "parse-link-header": "^1.0.1"
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.35",
+    "@types/micro-cors": "^0.1.0",
     "@types/parse-link-header": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
