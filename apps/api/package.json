@@ -1,12 +1,16 @@
 {
   "name": "graphqlzero-api",
   "version": "1.0.0",
-  "engines" : {
-    "node" : "^10"
+  "engines": {
+    "node": "^10"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/ --ext ts",
+    "test": "yarn lint"
+  },
   "dependencies": {
     "dotenv": "^8.1.0",
     "graphqlzero": "file:../../packages/graphqlzero",
@@ -15,6 +19,9 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/micro-cors": "^0.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
+    "eslint": "^6.4.0",
     "typescript": "^3.6.3"
   }
 }
