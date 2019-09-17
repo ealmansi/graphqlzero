@@ -118,7 +118,7 @@ function TopBar (): ReactElement {
             <a href="#get-started" className="get-started rgba-primary-4">Get Started</a>
           </li>
           <li>
-            <a href="https://github.com/ealmansi/gqlz" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/ealmansi/graphqlzero" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
         </ul>
       </nav>
@@ -720,7 +720,7 @@ function Footer (): ReactElement {
   return (
     <footer>
       <p>
-        Source code available on <a href="https://github.com/ealmansi/gqlz"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>. License: MIT.
+        Source code available on <a href="https://github.com/ealmansi/graphqlzero"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>. License: MIT.
       </p>
       <style jsx>{`
         footer {
