@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "graphqlzero": "file:../../packages/graphqlzero",
+    "graphqlzero": "^1.0.0",
     "micro-cors": "^0.1.1"
   },
   "devDependencies": {
