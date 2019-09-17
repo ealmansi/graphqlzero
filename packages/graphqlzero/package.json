@@ -1,0 +1,34 @@
+{
+  "name": "graphqlzero",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/ --ext ts",
+    "test": "yarn lint",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "dev": "yarn build:watch"
+  },
+  "dependencies": {
+    "apollo-server": "^2.9.3",
+    "apollo-server-core": "^2.9.3",
+    "apollo-server-express": "^2.9.3",
+    "apollo-server-lambda": "^2.9.3",
+    "apollo-server-micro": "^2.9.0",
+    "graphql": "^14.5.4",
+    "isomorphic-fetch": "^2.2.1",
+    "micro-cors": "^0.1.1",
+    "parse-link-header": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35",
+    "@types/micro-cors": "^0.1.0",
+    "@types/parse-link-header": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.2",
+    "typescript": "^3.5.3"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "graphqlzero-api",
+  "version": "1.0.0",
+  "engines" : {
+    "node" : "^10"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "graphqlzero": "file:../../packages/graphqlzero",
+    "micro-cors": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/micro-cors": "^0.1.0",
+    "typescript": "^3.6.3"
+  }
+}

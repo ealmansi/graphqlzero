@@ -1,31 +1,18 @@
 {
-  "name": "gqlz-graphql",
+  "name": "graphqlzero-root",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/ --ext ts",
-    "test": "yarn lint",
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "dev": "concurrently 'yarn build:watch' 'cd gqlz-web && now dev'",
-    "deploy": "cd gqlz-web && now"
-  },
-  "dependencies": {
-    "apollo-server-micro": "^2.9.0",
-    "graphql": "^14.5.4",
-    "isomorphic-fetch": "^2.2.1",
-    "micro-cors": "^0.1.1",
-    "parse-link-header": "^1.0.1"
+    "test": "lerna run test --stream",
+    "dev": "concurrently --names 'now,lerna' 'now dev' 'lerna run dev --stream --parallel'",
+    "prebuild": "lerna bootstrap",
+    "build": "lerna run build",
+    "start": "lerna run start --stream --parallel"
   },
   "devDependencies": {
-    "@types/isomorphic-fetch": "^0.0.35",
-    "@types/micro-cors": "^0.1.0",
-    "@types/parse-link-header": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
     "concurrently": "^4.1.2",
-    "eslint": "^6.2.2",
-    "typescript": "^3.5.3"
+    "lerna": "^3.16.4",
+    "now": "^16.2.0"
   }
 }
