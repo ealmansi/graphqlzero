@@ -2,9 +2,12 @@ import fetch from 'isomorphic-fetch';
 import parseLinkHeader from 'parse-link-header';
 import { OperatorOptions, Page, PageMetadata, PageQueryOptions, PaginateOptions, PaginationLinks, SearchOptions, SliceOptions, SortOptions } from '../page';
 
-const apiBaseUrl = process.env.JSON_PLACEHOLDER_URL;
-if (apiBaseUrl === undefined) {
-  throw new Error('Missing env variable JSON_PLACEHOLDER_URL.');
+let apiBaseUrl = process.env.JSON_PLACEHOLDER_URL;
+if (!(
+  typeof apiBaseUrl === 'string' &&
+  apiBaseUrl.length > 0
+)) {
+  apiBaseUrl = 'https://jsonplaceholder.typicode.com';
 }
 
 export async function fetchResource<T> (endpoint: string): Promise<T> {

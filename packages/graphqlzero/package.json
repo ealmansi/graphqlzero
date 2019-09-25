@@ -10,6 +10,9 @@
   "engines": {
     "node": "^10"
   },
+  "bin" : {
+    "graphqlzero" : "./dist/bin/graphqlzero.js"
+  },
   "scripts": {
     "lint": "eslint src/ --ext ts",
     "test": "yarn lint",
