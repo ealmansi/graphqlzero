@@ -1,6 +1,6 @@
 {
   "name": "graphqlzero-api",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "GraphQLZero: A simple, zero-config fake GraphQL API.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "graphqlzero": "^1.1.2",
+    "graphqlzero": "^1.1.3",
     "micro-cors": "^0.1.1"
   },
   "devDependencies": {
