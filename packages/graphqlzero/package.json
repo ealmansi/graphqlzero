@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "./dist"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "repository": "https://github.com/ealmansi/graphqlzero",
   "author": "Emilio Almansi <ealmansi@gmail.com>",
