@@ -4,12 +4,11 @@ import path from 'path';
 import yargs from 'yargs';
 import { run } from './run';
 
+/**
+ *
+ */
 async function main () {
-  const pkg = JSON.parse(
-    fs.readFileSync(
-      path.resolve(__dirname, '..', '..', 'package.json')
-    ).toString()
-  );
+  const pkg = readPackageJson();
   const options =
     yargs
       .usage('$0 [options] <source>')
@@ -27,6 +26,17 @@ async function main () {
       .alias('version', 'v')
       .argv;
   await run(options);
+}
+
+/**
+ *
+ */
+function readPackageJson () {
+  return JSON.parse(
+    fs.readFileSync(
+      path.resolve(__dirname, '..', '..', 'package.json')
+    ).toString()
+  );
 }
 
 if (require.main === module) {
