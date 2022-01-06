@@ -33,7 +33,7 @@
     "graphql": "^14.5.4",
     "isomorphic-fetch": "^2.2.1",
     "micro-cors": "^0.1.1",
-    "parse-link-header": "^1.0.1",
+    "parse-link-header": "^2.0.0",
     "yargs": "^14.0.0"
   },
   "devDependencies": {
