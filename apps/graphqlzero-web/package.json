@@ -30,7 +30,7 @@
     "graphql": "^14.5.4",
     "isomorphic-fetch": "^2.2.1",
     "micro-cors": "^0.1.1",
-    "next": "^9.1.6",
+    "next": "^12.1.0",
     "parse-link-header": "^1.0.1",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
