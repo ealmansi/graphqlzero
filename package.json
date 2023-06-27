@@ -1,21 +1,52 @@
 {
-  "name": "graphqlzero-root",
-  "version": "1.0.0",
+  "name": "graphqlzero",
+  "version": "2.0.0",
+  "private": true,
   "description": "GraphQLZero: A simple, zero-config fake GraphQL API.",
   "main": "index.js",
-  "repository": "https://github.com/ealmansi/graphqlzero",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ealmansi/graphqlzero.git"
+  },
   "author": "Emilio Almansi <ealmansi@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "test": "lerna run test --stream",
-    "dev": "concurrently --names 'now,lerna' 'now dev' 'lerna run dev --stream --parallel'",
-    "prebuild": "lerna bootstrap",
-    "build": "lerna run build",
-    "start": "lerna run start --stream --parallel"
+  "bugs": {
+    "url": "https://github.com/ealmansi/graphqlzero/issues"
+  },
+  "homepage": "https://github.com/ealmansi/graphqlzero#readme",
+  "dependencies": {
+    "@apollo/client": "^3.7.16",
+    "@apollo/server": "^4.7.5",
+    "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
+    "@as-integrations/next": "^2.0.0",
+    "@graphql-tools/utils": "^10.0.1",
+    "cors": "^2.8.5",
+    "graphql-tag": "^2.12.6",
+    "next": "^13.4.7",
+    "parse-link-header": "^2.0.0",
+    "prismjs": "^1.17.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "engines": {
+    "npm": ">=9.0.0 <10.0.0",
+    "node": ">=18.0.0 <19.0.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.2",
-    "lerna": "^3.20.1",
-    "now": "^16.5.0"
+    "@types/cors": "^2.8.13",
+    "@types/prismjs": "^1.16.0",
+    "@types/react": "18.2.14",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "babel-plugin-prismjs": "^1.1.1",
+    "eslint": "^8.43.0",
+    "eslint-config-next": "13.4.7",
+    "typescript": "5.0.4"
   }
 }
