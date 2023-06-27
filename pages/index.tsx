@@ -496,7 +496,7 @@ function MutationResultDisplay (props: MutationResultDisplayProps): ReactElement
   );
   useEffect(() => {
     runMutation();
-  }, [runMutation]);
+  }, [mutation, runMutation]);
   return <OperationResultDisplay result={result}/>;
 }
 
