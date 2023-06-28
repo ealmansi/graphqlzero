@@ -1,4 +1,7 @@
 ---
+env:
+  AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +16,17 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: aws sts get-caller-identity
 'on':
   push:
     branches: [ master ]
