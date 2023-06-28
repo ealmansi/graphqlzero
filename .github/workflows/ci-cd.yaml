@@ -29,12 +29,12 @@ jobs:
           node-version: 18.x
       - run: npm install
       - run: npm run build
+      - uses: actions/setup-python@v4
+      - run: pip install awsebcli --upgrade --user
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
-      - uses: actions/setup-python@v4
-      - run: pip install awsebcli --upgrade --user
       - run: eb init --region $AWS_REGION --platform "$EB_PLATFORM" $EB_APPLICATION
       - run: eb deploy $EB_ENVIRONMENT
 "on":
