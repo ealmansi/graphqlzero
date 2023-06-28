@@ -17,11 +17,16 @@ jobs:
       matrix:
         node-version: [18.x]
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - run: pip install awsebcli --upgrade --user
+      - run: eb --help
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
