@@ -2,6 +2,9 @@
 env:
   AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_TO_ASSUME }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
+  EB_PLATFORM: Node.js 18 running on 64bit Amazon Linux 2
+  EB_APPLICATION: graphqlzero
+  EB_ENVIRONMENT: graphqlzero-dev
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +34,8 @@ jobs:
         with:
           role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
-      - run: aws sts get-caller-identity
+      - run: eb init --region $AWS_REGION --platform "$EB_PLATFORM" $EB_APPLICATION
+      - run: eb deploy $EB_ENVIRONMENT
 'on':
   push:
     branches: [ master ]
