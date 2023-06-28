@@ -2,13 +2,13 @@
   "name": "graphqlzero",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "description": "GraphQLZero: A simple, zero-config fake GraphQL API.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && tsc --project tsconfig.api.json",
+    "start": "node api/index.js",
     "lint": "next lint"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "@as-integrations/next": "^2.0.0",
     "@graphql-tools/utils": "^10.0.1",
     "cors": "^2.8.5",
+    "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
     "next": "^13.4.7",
     "parse-link-header": "^2.0.0",
@@ -41,12 +42,14 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
+    "@types/parse-link-header": "^2.0.1",
     "@types/prismjs": "^1.16.0",
     "@types/react": "18.2.14",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "babel-plugin-prismjs": "^2.1.0",
     "eslint": "^8.43.0",
     "eslint-config-next": "13.4.7",
+    "prettier": "^2.8.8",
     "typescript": "5.1.5"
   }
 }

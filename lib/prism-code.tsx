@@ -1,5 +1,5 @@
-import Prism from 'prismjs';
-import React from 'react';
+import Prism from "prismjs";
+import React from "react";
 
 /**
  * Source: https://pathof.dev/blog/code-highlighting-in-react-using-prismjs.

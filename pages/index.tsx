@@ -1,108 +1,161 @@
-import { MutationResult, QueryResult } from '@apollo/client';
-import { useMutation, useQuery } from '@apollo/client';
-import { gql } from '@apollo/client';
-import Head from 'next/head';
-import React, { ReactElement, useEffect, useState } from 'react';
-import ExampleOperation, { getDefaultExampleOperation, getExampleOperations } from '../lib/example-operation';
-import { font } from '../lib/font';
-import { okaidia } from '../lib/okaidia';
-import { omitTypename } from '../lib/omit-typename';
-import { PrismCode } from '../lib/prism-code';
-import { unindent } from '../lib/unindent';
-import { withApolloClient } from '../lib/with-apollo-client';
+import { MutationResult, QueryResult } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
+import Head from "next/head";
+import React, { ReactElement, useEffect, useState } from "react";
+import ExampleOperation, {
+  getDefaultExampleOperation,
+  getExampleOperations,
+} from "../lib/example-operation";
+import { font } from "../lib/font";
+import { okaidia } from "../lib/okaidia";
+import { omitTypename } from "../lib/omit-typename";
+import { PrismCode } from "../lib/prism-code";
+import { unindent } from "../lib/unindent";
+import { withApolloClient } from "../lib/with-apollo-client";
 
-const PRIMARY_COLOR_0 = 'rgba(235,  3,160,1)';
-const PRIMARY_COLOR_1 = 'rgba(245,149,214,1)';
-const PRIMARY_COLOR_1_ALPHA = 'rgba(245,149,214,0.2)';
-const PRIMARY_COLOR_2 = 'rgba(238, 68,183,1)';
-const PRIMARY_COLOR_3 = 'rgba(199,  0,134,1)';
-const PRIMARY_COLOR_4 = 'rgba(126,  0, 85,1)';
-const PRIMARY_COLOR_5 = 'rgba(98,   0, 66,1)';
+const PRIMARY_COLOR_0 = "rgba(235,  3,160,1)";
+const PRIMARY_COLOR_1 = "rgba(245,149,214,1)";
+const PRIMARY_COLOR_1_ALPHA = "rgba(245,149,214,0.2)";
+const PRIMARY_COLOR_2 = "rgba(238, 68,183,1)";
+const PRIMARY_COLOR_3 = "rgba(199,  0,134,1)";
+const PRIMARY_COLOR_4 = "rgba(126,  0, 85,1)";
+const PRIMARY_COLOR_5 = "rgba(98,   0, 66,1)";
 
-const Index = withApolloClient(
-  function Index (): ReactElement {
-    return (
-      <div>
-        <Head>
-          <title>GraphQLZero: A Simple, Zero-Config Fake GraphQL API.</title>
-          <meta name="description" content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."/>
-          <link rel="canonical" href="https://graphqlzero.almansi.me/" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="manifest" href="/site.webmanifest" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-          <meta name="msapplication-TileColor" content="#da532c" />
-          <meta name="theme-color" content="#ffffff"></meta>
-          <meta name="og:title" content="GraphQLZero"/>
-          <meta name="og:type" content="software"/>
-          <meta name="og:url" content="https://graphqlzero.almansi.me/"/>
-          <meta name="og:image" content="https://graphqlzero.almansi.me/graphql-image.jpg"/>
-          <meta name="og:site_name" content="GraphQLZero"/>
-          <meta name="og:description" content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."/>
-          <meta name="google-site-verification" content="UCPORh5hdVtXlGIwXOH4DSeRlGLPicaYtUNeHTqg8kA" />
-        </Head>
-        <TopBar />
-        <Header />
-        <Main />
-        <Footer />
-        <style jsx global>{`
-          html, body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Raleway', sans-serif;
-          }
-          .rgba-primary-0 {
-            color: ${PRIMARY_COLOR_0};
-          }
-          .rgba-primary-1 {
-            color: ${PRIMARY_COLOR_1};
-          }
-          .rgba-primary-2 {
-            color: ${PRIMARY_COLOR_2};
-          }
-          .rgba-primary-3 {
-            color: ${PRIMARY_COLOR_3};
-          }
-          .rgba-primary-4 {
-            color: ${PRIMARY_COLOR_4};
-          }
-          .rgba-primary-5 {
-            color: ${PRIMARY_COLOR_5};
-          }
-          pre.word-wrap, code.word-wrap {
-            white-space: pre-wrap!important;
-            white-space: -moz-pre-wrap!important;
-            white-space: -pre-wrap!important;
-            white-space: -o-pre-wrap!important;
-            word-wrap: break-word!important;
-          }
-          div.code-toolbar > .toolbar {
-            margin-right: 5px;
-          }
-        `}</style>
-        <style jsx global>{font}</style>
-        <style jsx global>{okaidia}</style>
-      </div>
-    );
-  }
-);
+const Index = withApolloClient(function Index(): ReactElement {
+  return (
+    <div>
+      <Head>
+        <title>GraphQLZero: A Simple, Zero-Config Fake GraphQL API.</title>
+        <meta
+          name="description"
+          content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."
+        />
+        <link rel="canonical" href="https://graphqlzero.almansi.me/" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff"></meta>
+        <meta name="og:title" content="GraphQLZero" />
+        <meta name="og:type" content="software" />
+        <meta name="og:url" content="https://graphqlzero.almansi.me/" />
+        <meta
+          name="og:image"
+          content="https://graphqlzero.almansi.me/graphql-image.jpg"
+        />
+        <meta name="og:site_name" content="GraphQLZero" />
+        <meta
+          name="og:description"
+          content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."
+        />
+        <meta
+          name="google-site-verification"
+          content="UCPORh5hdVtXlGIwXOH4DSeRlGLPicaYtUNeHTqg8kA"
+        />
+      </Head>
+      <TopBar />
+      <Header />
+      <Main />
+      <Footer />
+      <style jsx global>{`
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: "Raleway", sans-serif;
+        }
+        .rgba-primary-0 {
+          color: ${PRIMARY_COLOR_0};
+        }
+        .rgba-primary-1 {
+          color: ${PRIMARY_COLOR_1};
+        }
+        .rgba-primary-2 {
+          color: ${PRIMARY_COLOR_2};
+        }
+        .rgba-primary-3 {
+          color: ${PRIMARY_COLOR_3};
+        }
+        .rgba-primary-4 {
+          color: ${PRIMARY_COLOR_4};
+        }
+        .rgba-primary-5 {
+          color: ${PRIMARY_COLOR_5};
+        }
+        pre.word-wrap,
+        code.word-wrap {
+          white-space: pre-wrap !important;
+          white-space: -moz-pre-wrap !important;
+          white-space: -pre-wrap !important;
+          white-space: -o-pre-wrap !important;
+          word-wrap: break-word !important;
+        }
+        div.code-toolbar > .toolbar {
+          margin-right: 5px;
+        }
+      `}</style>
+      <style jsx global>
+        {font}
+      </style>
+      <style jsx global>
+        {okaidia}
+      </style>
+    </div>
+  );
+});
 
-function TopBar (): ReactElement {
+function TopBar(): ReactElement {
   return (
     <div>
       <nav>
-        <a href="/api" className="brand" target="_blank" rel="noopener noreferrer"><strong>GraphQL<span className="rgba-primary-3">Zero</span></strong></a>
+        <a
+          href="/api"
+          className="brand"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>
+            GraphQL<span className="rgba-primary-3">Zero</span>
+          </strong>
+        </a>
         <ul>
           <li>
-            <a href="#examples" className="examples rgba-primary-4">Examples</a>
+            <a href="#examples" className="examples rgba-primary-4">
+              Examples
+            </a>
           </li>
           <li>
-            <a href="#get-started" className="get-started rgba-primary-4">Get Started</a>
+            <a href="#get-started" className="get-started rgba-primary-4">
+              Get Started
+            </a>
           </li>
           <li>
-            <a href="https://github.com/ealmansi/graphqlzero" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a
+              href="https://github.com/ealmansi/graphqlzero"
+              className="rgba-primary-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
           </li>
         </ul>
       </nav>
@@ -146,16 +199,40 @@ function TopBar (): ReactElement {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
-function Header (): ReactElement {
+function Header(): ReactElement {
   return (
     <header>
-      <h1>GraphQL<span className="rgba-primary-3">Zero</span></h1>
+      <h1>
+        GraphQL<span className="rgba-primary-3">Zero</span>
+      </h1>
       <h2>Fake Online GraphQL API for Testing and Prototyping</h2>
-      <p>Zero-Config, No Registration, Compatible with React, Angular, Vue, and more </p>
-      <p>Powered by <a href="https://jsonplaceholder.typicode.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and <a href="https://www.apollographql.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">Apollo</a></p>
+      <p>
+        Zero-Config, No Registration, Compatible with React, Angular, Vue, and
+        more{" "}
+      </p>
+      <p>
+        Powered by{" "}
+        <a
+          href="https://jsonplaceholder.typicode.com"
+          className="rgba-primary-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JSONPlaceholder
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://www.apollographql.com"
+          className="rgba-primary-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apollo
+        </a>
+      </p>
       <style jsx>{`
         header {
           padding: 70px 50px;
@@ -198,10 +275,10 @@ function Header (): ReactElement {
         }
       `}</style>
     </header>
-  )
+  );
 }
 
-function Main (): ReactElement {
+function Main(): ReactElement {
   return (
     <main>
       <div>
@@ -221,15 +298,31 @@ function Main (): ReactElement {
         }
       `}</style>
     </main>
-  )
+  );
 }
 
-function Intro (): ReactElement {
+function Intro(): ReactElement {
   return (
     <section id="intro">
       <h1>Intro</h1>
       <p>
-        <strong>GraphQL<span className="rgba-primary-3">Zero</span></strong> is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app. It is inspired and powered by <a href="https://jsonplaceholder.typicode.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a>, serving the same dataset but in the form of a GraphQL server. You'll find it useful for learning more about GraphQL, writing tutorials, testing new libraries, and more.
+        <strong>
+          GraphQL<span className="rgba-primary-3">Zero</span>
+        </strong>{" "}
+        is a free, online GraphQL API that you can use to get fake data from a
+        real backend while testing or prototyping your app. It is inspired and
+        powered by{" "}
+        <a
+          href="https://jsonplaceholder.typicode.com"
+          className="rgba-primary-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JSONPlaceholder
+        </a>
+        , serving the same dataset but in the form of a GraphQL server. You'll
+        find it useful for learning more about GraphQL, writing tutorials,
+        testing new libraries, and more.
       </p>
       <style jsx>{`
         section {
@@ -241,12 +334,14 @@ function Intro (): ReactElement {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
-function Examples (): ReactElement {
+function Examples(): ReactElement {
   const defaultOperation = getDefaultExampleOperation();
-  const [activeOperationId, setActiveOperationId] = useState(defaultOperation.id);
+  const [activeOperationId, setActiveOperationId] = useState(
+    defaultOperation.id
+  );
   let activeOperation = getExampleOperations().find((exampleOperation) => {
     return exampleOperation.id === activeOperationId;
   });
@@ -257,13 +352,15 @@ function Examples (): ReactElement {
     <section id="examples" className="examples">
       <h1>Examples</h1>
       <p>
-        Below you can try out a few example queries and mutations for common use cases like getting a list of resources, retrieving a specific entity, or exploring nested relationships.
+        Below you can try out a few example queries and mutations for common use
+        cases like getting a list of resources, retrieving a specific entity, or
+        exploring nested relationships.
       </p>
       <div id="example-top" className="example-top">
         <div className="top-row">
           <div className="left-column">
-            <OperationDisplay exampleOperation={activeOperation}/>
-            <VariablesDisplay exampleOperation={activeOperation}/>
+            <OperationDisplay exampleOperation={activeOperation} />
+            <VariablesDisplay exampleOperation={activeOperation} />
           </div>
           <div className="right-column">
             <OperationSelect
@@ -272,10 +369,14 @@ function Examples (): ReactElement {
             />
           </div>
         </div>
-        <ResultDisplay exampleOperation={activeOperation}/>
+        <ResultDisplay exampleOperation={activeOperation} />
       </div>
       <p>
-        For more details about the different entities, check out the <a href="#schema"  className="rgba-primary-2">Schema</a>.
+        For more details about the different entities, check out the{" "}
+        <a href="#schema" className="rgba-primary-2">
+          Schema
+        </a>
+        .
       </p>
       <style jsx>{`
         .examples {
@@ -317,17 +418,17 @@ function Examples (): ReactElement {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 interface OperationDisplayProps {
   exampleOperation: ExampleOperation;
 }
 
-function OperationDisplay (props: OperationDisplayProps): ReactElement {
+function OperationDisplay(props: OperationDisplayProps): ReactElement {
   const { exampleOperation } = props;
   const { operation, source } = exampleOperation;
-  const heading = operation === 'query' ? 'Query' : 'Mutation';
+  const heading = operation === "query" ? "Query" : "Mutation";
   return (
     <section>
       <h1>{heading}</h1>
@@ -339,14 +440,14 @@ function OperationDisplay (props: OperationDisplayProps): ReactElement {
         />
       </pre>
     </section>
-  )
+  );
 }
 
 interface VariablesDisplayProps {
   exampleOperation: ExampleOperation;
 }
 
-function VariablesDisplay (props: VariablesDisplayProps): ReactElement {
+function VariablesDisplay(props: VariablesDisplayProps): ReactElement {
   const { exampleOperation } = props;
   const { variables } = exampleOperation;
   const json = JSON.stringify(variables, null, 2);
@@ -354,14 +455,10 @@ function VariablesDisplay (props: VariablesDisplayProps): ReactElement {
     <section>
       <h1>Variables</h1>
       <pre className="word-wrap">
-        <PrismCode
-          code={json}
-          language="json"
-          plugins={["line-numbers"]}
-        />
+        <PrismCode code={json} language="json" plugins={["line-numbers"]} />
       </pre>
     </section>
-  )
+  );
 }
 
 interface OperationSelectProps {
@@ -369,23 +466,23 @@ interface OperationSelectProps {
   setActiveOperationId: (id: string) => void;
 }
 
-function OperationSelect (props: OperationSelectProps): ReactElement {
+function OperationSelect(props: OperationSelectProps): ReactElement {
   const { activeOperationId, setActiveOperationId } = props;
   return (
     <div className="operation-select">
       <ul>
-        {
-          getExampleOperations().map((exampleQuery) => {
-            const { id, label } = exampleQuery;
-            const className = id === activeOperationId ? 'active' : '';
-            const onClick = () => setActiveOperationId(id);
-            return (
-              <li key={id} className={className}>
-                <a href="#example-top" onClick={onClick}>{label}</a>
-              </li>
-            );
-          })
-        }
+        {getExampleOperations().map((exampleQuery) => {
+          const { id, label } = exampleQuery;
+          const className = id === activeOperationId ? "active" : "";
+          const onClick = () => setActiveOperationId(id);
+          return (
+            <li key={id} className={className}>
+              <a href="#example-top" onClick={onClick}>
+                {label}
+              </a>
+            </li>
+          );
+        })}
       </ul>
       <style jsx>{`
         .operation-select {
@@ -436,25 +533,27 @@ interface ResultDisplayProps {
   exampleOperation: ExampleOperation;
 }
 
-function ResultDisplay (props: ResultDisplayProps): ReactElement {
+function ResultDisplay(props: ResultDisplayProps): ReactElement {
   const { exampleOperation } = props;
   const { operation, source, variables } = exampleOperation;
   return (
     <section>
       <h1>Result</h1>
-      {
-        operation === 'query' ? (
-          <QueryResultDisplay
-            query={gql`${source}`}
-            variables={variables}
-          />
-        ) : (
-          <MutationResultDisplay
-            mutation={gql`${source}`}
-            variables={variables}
-          />
-        )
-      }
+      {operation === "query" ? (
+        <QueryResultDisplay
+          query={gql`
+            ${source}
+          `}
+          variables={variables}
+        />
+      ) : (
+        <MutationResultDisplay
+          mutation={gql`
+            ${source}
+          `}
+          variables={variables}
+        />
+      )}
     </section>
   );
 }
@@ -466,16 +565,13 @@ interface QueryResultDisplayProps {
   };
 }
 
-function QueryResultDisplay (props: QueryResultDisplayProps): ReactElement {
+function QueryResultDisplay(props: QueryResultDisplayProps): ReactElement {
   const { query, variables } = props;
-  const result = useQuery(
-    query,
-    {
-      variables,
-      fetchPolicy: 'no-cache'
-    }
-  );
-  return <OperationResultDisplay result={result}/>;
+  const result = useQuery(query, {
+    variables,
+    fetchPolicy: "no-cache",
+  });
+  return <OperationResultDisplay result={result} />;
 }
 
 interface MutationResultDisplayProps {
@@ -485,26 +581,27 @@ interface MutationResultDisplayProps {
   };
 }
 
-function MutationResultDisplay (props: MutationResultDisplayProps): ReactElement {
+function MutationResultDisplay(
+  props: MutationResultDisplayProps
+): ReactElement {
   const { mutation, variables } = props;
-  const [runMutation, result] = useMutation(
-    mutation,
-    {
-      variables,
-      fetchPolicy: 'no-cache'
-    }
-  );
+  const [runMutation, result] = useMutation(mutation, {
+    variables,
+    fetchPolicy: "no-cache",
+  });
   useEffect(() => {
     runMutation();
   }, [mutation, runMutation]);
-  return <OperationResultDisplay result={result}/>;
+  return <OperationResultDisplay result={result} />;
 }
 
 interface OperationResultDisplayProps {
   result: QueryResult | MutationResult;
 }
 
-function OperationResultDisplay(props: OperationResultDisplayProps): ReactElement {
+function OperationResultDisplay(
+  props: OperationResultDisplayProps
+): ReactElement {
   const { result } = props;
   const { called, loading, error, data } = result;
   const [loadingDots, setLoadingDots] = useState(1);
@@ -522,31 +619,25 @@ function OperationResultDisplay(props: OperationResultDisplayProps): ReactElemen
       }
     };
   });
-  let content
+  let content;
   if (error !== undefined) {
-    content = 'Oops. Something went wrong.';
+    content = "Oops. Something went wrong.";
     console.error(JSON.stringify(error));
-  }
-  else {
+  } else {
     if (!called || loading || typeof window === "undefined") {
-      content = `Loading${'.'.repeat(loadingDots)}`;
-    }
-    else {
+      content = `Loading${".".repeat(loadingDots)}`;
+    } else {
       try {
         content = JSON.stringify(data, omitTypename, 2);
       } catch (err) {
-        content = 'Oops. Something went wrong.';
+        content = "Oops. Something went wrong.";
         console.error(JSON.stringify(error));
       }
     }
   }
   return (
     <pre className="word-wrap">
-      <PrismCode
-        code={content}
-        language="json"
-        plugins={["line-numbers"]}
-      />
+      <PrismCode code={content} language="json" plugins={["line-numbers"]} />
       <style jsx>{`
         pre {
           max-height: 500px;
@@ -557,27 +648,42 @@ function OperationResultDisplay(props: OperationResultDisplayProps): ReactElemen
   );
 }
 
-function GetStarted (): ReactElement {
+function GetStarted(): ReactElement {
   return (
     <section id="get-started">
       <h1>Get Started</h1>
       <p>
-        The easiest way to get started is by visiting the <a href="/api"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>. There, you can see the API's docs and run queries against the real backend. Feel free to copy one of the queries in the <a href="#examples"  className="examples rgba-primary-4">examples</a> above to get you started.
+        The easiest way to get started is by visiting the{" "}
+        <a
+          href="/api"
+          className="rgba-primary-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GraphQL API Playground
+        </a>
+        . There, you can see the API's docs and run queries against the real
+        backend. Feel free to copy one of the queries in the{" "}
+        <a href="#examples" className="examples rgba-primary-4">
+          examples
+        </a>{" "}
+        above to get you started.
       </p>
       <div className="window">
         <img src="/img/playground-1.png" alt="Playground Query"></img>
       </div>
-      <p className="caption">
-        1) GraphQL Playground: Query Execution.
-      </p>
+      <p className="caption">1) GraphQL Playground: Query Execution.</p>
       <div className="window">
         <img src="/img/playground-2.png" alt="Playground Docs"></img>
       </div>
-      <p className="caption">
-        2) GraphQL Playground: API Docs.
-      </p>
+      <p className="caption">2) GraphQL Playground: API Docs.</p>
       <p>
-        To use <strong>GraphQL<span className="rgba-primary-3">Zero</span></strong> from your app, a simple POST request using fetch will do the job. You can try out the following code right from your browser's console.
+        To use{" "}
+        <strong>
+          GraphQL<span className="rgba-primary-3">Zero</span>
+        </strong>{" "}
+        from your app, a simple POST request using fetch will do the job. You
+        can try out the following code right from your browser's console.
       </p>
       <pre className="word-wrap">
         <PrismCode
@@ -601,7 +707,18 @@ function GetStarted (): ReactElement {
         />
       </pre>
       <p>
-        A GraphQL client will be necessary for anything beyond the basics. For example, if you're using JavaScript, <a href="https://www.apollographql.com/docs/react"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer">Apollo Client</a> can come in handy. The following code will get your client set up and issue a simple query.
+        A GraphQL client will be necessary for anything beyond the basics. For
+        example, if you're using JavaScript,{" "}
+        <a
+          href="https://www.apollographql.com/docs/react"
+          className="rgba-primary-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apollo Client
+        </a>{" "}
+        can come in handy. The following code will get your client set up and
+        issue a simple query.
       </p>
       <pre className="word-wrap">
         <PrismCode
@@ -647,7 +764,8 @@ function GetStarted (): ReactElement {
           margin: 0 auto;
           background: white;
           border-radius: 0.3em;
-          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 8px 32px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
+            0 8px 32px rgba(0, 0, 0, 0.12);
           overflow: hidden;
           padding-top: 26px;
           position: relative;
@@ -659,7 +777,7 @@ function GetStarted (): ReactElement {
           position: absolute;
           top: 0;
           display: block;
-          content: ' ';
+          content: " ";
           background: linear-gradient(#f0f0f0, #dedede);
           border-radius: 0.3em 0.3em 0 0;
           box-shadow: inset 0 2px 2px -2px white, 0 1px rgba(0, 0, 0, 0.4);
@@ -680,18 +798,47 @@ function GetStarted (): ReactElement {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
-function Schema (): ReactElement {
+function Schema(): ReactElement {
   return (
     <section id="schema">
       <h1>Schema</h1>
       <p>
-        <strong>GraphQL<span className="rgba-primary-3">Zero</span></strong> is powered by <a href="https://jsonplaceholder.typicode.com" className="rgba-primary-4" target="_blank" rel="noopener noreferrer">JSONPlaceholder</a> and serves the same dataset in the form of a GraphQL API. Six different types of entities exist: <em>users</em>, <em>posts</em>, <em>comments</em>, <em>todos</em>, <em>albums</em>, and <em>photos</em>. These entities are also related to each other; for example, a user has many posts, a photo belongs to an album, etc.
+        <strong>
+          GraphQL<span className="rgba-primary-3">Zero</span>
+        </strong>{" "}
+        is powered by{" "}
+        <a
+          href="https://jsonplaceholder.typicode.com"
+          className="rgba-primary-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          JSONPlaceholder
+        </a>{" "}
+        and serves the same dataset in the form of a GraphQL API. Six different
+        types of entities exist: <em>users</em>, <em>posts</em>,{" "}
+        <em>comments</em>, <em>todos</em>, <em>albums</em>, and <em>photos</em>.
+        These entities are also related to each other; for example, a user has
+        many posts, a photo belongs to an album, etc.
       </p>
       <p>
-        For more information on how to query different entities, check out the <a href="#examples" className="rgba-primary-4">examples</a> or dive into the full schema in the <a href="/api" className="rgba-primary-2" target="_blank" rel="noopener noreferrer">GraphQL API Playground</a>.
+        For more information on how to query different entities, check out the{" "}
+        <a href="#examples" className="rgba-primary-4">
+          examples
+        </a>{" "}
+        or dive into the full schema in the{" "}
+        <a
+          href="/api"
+          className="rgba-primary-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GraphQL API Playground
+        </a>
+        .
       </p>
       <style jsx>{`
         section {
@@ -700,14 +847,23 @@ function Schema (): ReactElement {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
-function Footer (): ReactElement {
+function Footer(): ReactElement {
   return (
     <footer>
       <p>
-        Source code available on <a href="https://github.com/ealmansi/graphqlzero"  className="rgba-primary-2" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong></a>. License: MIT.
+        Source code available on{" "}
+        <a
+          href="https://github.com/ealmansi/graphqlzero"
+          className="rgba-primary-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <strong>GitHub</strong>
+        </a>
+        . License: MIT.
       </p>
       <style jsx>{`
         footer {
@@ -719,7 +875,7 @@ function Footer (): ReactElement {
         }
       `}</style>
     </footer>
-  )
+  );
 }
 
 export default Index;

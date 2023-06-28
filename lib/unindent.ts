@@ -1,5 +1,5 @@
 export function unindent(text: string) {
-  let lines = text.split('\n');
+  let lines = text.split("\n");
   if (lines.length < 3) {
     return text;
   }
@@ -7,11 +7,10 @@ export function unindent(text: string) {
   let spaces = text.length;
   for (const line of lines) {
     let i = 0;
-    for (; i < line.length && line[i] === ' '; ++i) {
-    }
+    for (; i < line.length && line[i] === " "; ++i) {}
     if (i < line.length) {
       spaces = Math.min(spaces, i);
     }
   }
-  return lines.map(line => line.substr(spaces)).join('\n');
+  return lines.map((line) => line.substr(spaces)).join("\n");
 }

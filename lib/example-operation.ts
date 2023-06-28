@@ -1,19 +1,19 @@
 export default interface ExampleOperation {
   id: string;
   label: string;
-  operation: 'query' | 'mutation';
+  operation: "query" | "mutation";
   source: string;
   variables: {
     [key: string]: any;
   };
 }
 
-export function getExampleOperations (): Array<ExampleOperation> {
+export function getExampleOperations(): Array<ExampleOperation> {
   return [
     {
-      id: 'get-post',
-      label: 'Get a Post',
-      operation: 'query',
+      id: "get-post",
+      label: "Get a Post",
+      operation: "query",
       source: `
         query {
           post(id: 1) {
@@ -23,13 +23,12 @@ export function getExampleOperations (): Array<ExampleOperation> {
           }
         }
       `,
-      variables: {
-      }
+      variables: {},
     },
     {
-      id: 'get-user',
-      label: 'Get a User',
-      operation: 'query',
+      id: "get-user",
+      label: "Get a User",
+      operation: "query",
       source: `
         query {
           user(id: 1) {
@@ -45,13 +44,12 @@ export function getExampleOperations (): Array<ExampleOperation> {
           }
         }
       `,
-      variables: {
-      }
+      variables: {},
     },
     {
-      id: 'get-user-posts',
-      label: 'Get User\'s Posts',
-      operation: 'query',
+      id: "get-user-posts",
+      label: "Get User's Posts",
+      operation: "query",
       source: `
         query {
           user(id: 1) {
@@ -64,13 +62,12 @@ export function getExampleOperations (): Array<ExampleOperation> {
           }
         }
       `,
-      variables: {
-      }
+      variables: {},
     },
     {
-      id: 'get-photos-album',
-      label: 'Get a Photo\'s Album',
-      operation: 'query',
+      id: "get-photos-album",
+      label: "Get a Photo's Album",
+      operation: "query",
       source: `
         query (
           $id: ID!
@@ -87,13 +84,13 @@ export function getExampleOperations (): Array<ExampleOperation> {
         }
       `,
       variables: {
-        id: 5
-      }
+        id: 5,
+      },
     },
     {
-      id: 'get-posts',
-      label: 'Get All Posts',
-      operation: 'query',
+      id: "get-posts",
+      label: "Get All Posts",
+      operation: "query",
       source: `
         query (
           $options: PageQueryOptions
@@ -113,15 +110,15 @@ export function getExampleOperations (): Array<ExampleOperation> {
         options: {
           paginate: {
             page: 1,
-            limit: 5
-          }
-        }
-      }
+            limit: 5,
+          },
+        },
+      },
     },
     {
-      id: 'create-post',
-      label: 'Create a Post',
-      operation: 'mutation',
+      id: "create-post",
+      label: "Create a Post",
+      operation: "mutation",
       source: `
         mutation (
           $input: CreatePostInput!
@@ -135,15 +132,15 @@ export function getExampleOperations (): Array<ExampleOperation> {
       `,
       variables: {
         input: {
-          title: 'A Very Captivating Post Title',
-          body: 'Some interesting content.'
-        }
-      }
+          title: "A Very Captivating Post Title",
+          body: "Some interesting content.",
+        },
+      },
     },
     {
-      id: 'update-post',
-      label: 'Update a Post',
-      operation: 'mutation',
+      id: "update-post",
+      label: "Update a Post",
+      operation: "mutation",
       source: `
         mutation (
           $id: ID!,
@@ -158,14 +155,14 @@ export function getExampleOperations (): Array<ExampleOperation> {
       variables: {
         id: 1,
         input: {
-          body: 'Some updated content.'
-        }
-      }
+          body: "Some updated content.",
+        },
+      },
     },
     {
-      id: 'delete-post',
-      label: 'Delete a Post',
-      operation: 'mutation',
+      id: "delete-post",
+      label: "Delete a Post",
+      operation: "mutation",
       source: `
         mutation (
           $id: ID!
@@ -174,12 +171,12 @@ export function getExampleOperations (): Array<ExampleOperation> {
         }
       `,
       variables: {
-        id: 101
-      }
-    }
-  ]
+        id: 101,
+      },
+    },
+  ];
 }
 
-export function getDefaultExampleOperation () {
+export function getDefaultExampleOperation() {
   return getExampleOperations()[0];
 }

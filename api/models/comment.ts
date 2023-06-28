@@ -1,7 +1,13 @@
-import { gql } from 'graphql-tag';
-import { Page, PageQueryOptions } from './page';
-import { fetchPost, Post } from './post';
-import { createResource, deleteResource, fetchPage, fetchResource, updateResource } from './util/json-placeholder';
+import { gql } from "graphql-tag";
+import { Page, PageQueryOptions } from "./page.js";
+import { fetchPost, Post } from "./post.js";
+import {
+  createResource,
+  deleteResource,
+  fetchPage,
+  fetchResource,
+  updateResource,
+} from "./util/json-placeholder.js";
 
 export const typeDefs = gql`
   extend type Query {
@@ -56,56 +62,61 @@ export interface UpdateCommentInput {
   body?: string;
 }
 
-export async function fetchComments (
+export async function fetchComments(
   options?: PageQueryOptions
 ): Promise<Page<Comment>> {
-  return fetchPage<Comment>('/comments', options);
+  return fetchPage<Comment>("/comments", options);
 }
 
-export async function fetchComment (id: string): Promise<Comment> {
+export async function fetchComment(id: string): Promise<Comment> {
   return fetchResource<Comment>(`/comments/${id}`);
 }
 
-export async function createComment (input: CreateCommentInput): Promise<Comment> {
+export async function createComment(
+  input: CreateCommentInput
+): Promise<Comment> {
   return createResource<Comment>(`/comments`, JSON.stringify(input));
 }
 
-export async function updateComment (id: string, input: UpdateCommentInput): Promise<Comment> {
+export async function updateComment(
+  id: string,
+  input: UpdateCommentInput
+): Promise<Comment> {
   return updateResource<Comment>(`/comments/${id}`, JSON.stringify(input));
 }
 
-export async function deleteComment (id: string): Promise<boolean> {
+export async function deleteComment(id: string): Promise<boolean> {
   await deleteResource<Comment>(`/comments/${id}`);
   return true;
 }
 
 export const resolvers = {
   Query: {
-    async comments (_: undefined, args: object): Promise<Page<Comment>> {
-      const { options } = args as { options?: PageQueryOptions }
+    async comments(_: undefined, args: object): Promise<Page<Comment>> {
+      const { options } = args as { options?: PageQueryOptions };
       return fetchComments(options);
     },
-    async comment (_: undefined, args: object): Promise<Comment> {
+    async comment(_: undefined, args: object): Promise<Comment> {
       const { id } = args as { id: string };
       return fetchComment(id);
     },
   },
   Mutation: {
-    async createComment (_: undefined, args: object): Promise<Comment> {
+    async createComment(_: undefined, args: object): Promise<Comment> {
       const { input } = args as { input: CreateCommentInput };
       return createComment(input);
     },
-    async updateComment (_: undefined, args: object): Promise<Comment> {
+    async updateComment(_: undefined, args: object): Promise<Comment> {
       const { id, input } = args as { id: string; input: UpdateCommentInput };
       return updateComment(id, input);
     },
-    async deleteComment (_: undefined, args: object): Promise<boolean> {
+    async deleteComment(_: undefined, args: object): Promise<boolean> {
       const { id } = args as { id: string };
       return deleteComment(id);
-    }
+    },
   },
   Comment: {
-    async post (comment: Comment): Promise<Post> {
+    async post(comment: Comment): Promise<Post> {
       return fetchPost(comment.postId);
     },
   },

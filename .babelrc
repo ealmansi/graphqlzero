@@ -1,10 +1,13 @@
 {
   "presets": ["next/babel"],
   "plugins": [
-    ["prismjs", {
-      "languages": ["javascript", "graphql", "json"],
-      "plugins": ["line-numbers", "copy-to-clipboard"],
-      "theme": "okaidia"
-    }]
+    [
+      "prismjs",
+      {
+        "languages": ["javascript", "graphql", "json"],
+        "plugins": ["line-numbers", "copy-to-clipboard"],
+        "theme": "okaidia"
+      }
+    ]
   ]
 }

@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css';
+import css from "styled-jsx/css";
 
 export const okaidia = css.global`
   pre[class*="language-"].line-numbers {
@@ -26,22 +26,21 @@ export const okaidia = css.global`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
   }
 
-    .line-numbers-rows > span {
-      pointer-events: none;
-      display: block;
-      counter-increment: linenumber;
-    }
+  .line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+  }
 
-      .line-numbers-rows > span:before {
-        content: counter(linenumber);
-        color: #999;
-        display: block;
-        padding-right: 0.8em;
-        text-align: right;
-      }
+  .line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+  }
 
   div.code-toolbar {
     position: relative;
@@ -49,8 +48,8 @@ export const okaidia = css.global`
 
   div.code-toolbar > .toolbar {
     position: absolute;
-    top: .3em;
-    right: .2em;
+    top: 0.3em;
+    right: 0.2em;
     transition: opacity 0.3s ease-in-out;
     opacity: 0;
   }
@@ -90,12 +89,12 @@ export const okaidia = css.global`
   div.code-toolbar > .toolbar button,
   div.code-toolbar > .toolbar span {
     color: #bbb;
-    font-size: .8em;
-    padding: 0 .5em;
+    font-size: 0.8em;
+    padding: 0 0.5em;
     background: #f5f2f0;
     background: rgba(224, 224, 224, 0.2);
-    box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
-    border-radius: .5em;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
   }
 
   div.code-toolbar > .toolbar a:hover,
@@ -119,7 +118,7 @@ export const okaidia = css.global`
     color: #f8f8f2;
     background: none;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     font-size: 1em;
     text-align: left;
     white-space: pre;
@@ -141,7 +140,7 @@ export const okaidia = css.global`
   /* Code blocks */
   pre[class*="language-"] {
     padding: 1em;
-    margin: .5em 0;
+    margin: 0.5em 0;
     overflow: auto;
     border-radius: 0.3em;
   }
@@ -153,8 +152,8 @@ export const okaidia = css.global`
 
   /* Inline code */
   :not(pre) > code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
+    padding: 0.1em;
+    border-radius: 0.3em;
     white-space: normal;
   }
 
@@ -170,7 +169,7 @@ export const okaidia = css.global`
   }
 
   .namespace {
-    opacity: .7;
+    opacity: 0.7;
   }
 
   .token.property,

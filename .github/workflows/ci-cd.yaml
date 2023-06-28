@@ -36,6 +36,6 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       - run: eb init --region $AWS_REGION --platform "$EB_PLATFORM" $EB_APPLICATION
       - run: eb deploy $EB_ENVIRONMENT
-'on':
+"on":
   push:
-    branches: [ master ]
+    branches: [master]

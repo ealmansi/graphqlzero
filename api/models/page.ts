@@ -1,4 +1,4 @@
-import { gql } from 'graphql-tag';
+import { gql } from "graphql-tag";
 
 export const typeDefs = gql`
   input PageQueryOptions {
@@ -169,8 +169,6 @@ export interface PageMetadata {
 }
 
 export const resolvers = {
-  Query: {
-  },
-  Mutation: {
-  },
+  Query: {},
+  Mutation: {},
 };
