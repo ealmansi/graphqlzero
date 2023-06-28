@@ -10,7 +10,7 @@ import express from "express";
 import path from "path";
 
 async function main() {
-  const port = 3000;
+  const port = 8080;
   const app = express();
   const apolloServer = new ApolloServer<{}>({
     typeDefs,
