@@ -12,13 +12,10 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.x
       - run: npm ci
       - run: npm run lint
       - run: npm run build
-    strategy:
-      matrix:
-        node-version: [18.x]
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -27,13 +24,17 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-      - run: pip install awsebcli --upgrade --user
-      - run: eb --help
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - run: npm install
+      - run: npm run build
       - uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_REGION }}
+      - uses: actions/setup-python@v4
+      - run: pip install awsebcli --upgrade --user
       - run: eb init --region $AWS_REGION --platform "$EB_PLATFORM" $EB_APPLICATION
       - run: eb deploy $EB_ENVIRONMENT
 "on":
