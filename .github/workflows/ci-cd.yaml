@@ -5,6 +5,7 @@ env:
   EB_PLATFORM: Node.js 18 running on 64bit Amazon Linux 2
   EB_APPLICATION: graphqlzero
   EB_ENVIRONMENT: graphqlzero-dev
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,6 +29,10 @@ jobs:
         with:
           node-version: 18.x
       - run: npm install
+      - run: |
+          touch .env
+          echo "SENTRY_DSN=$SENTRY_DSN" >> .env
+          echo "NEXT_PUBLIC_SENTRY_DSN=$SENTRY_DSN" >> .env
       - run: npm run build
       - uses: actions/setup-python@v4
       - run: pip install awsebcli --upgrade --user

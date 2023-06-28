@@ -47,3 +47,6 @@ tsconfig.tsbuildinfo
 .next
 out
 api/**/*.js
+
+# Environment files
+.env

@@ -8,8 +8,15 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import path from "path";
+import * as Sentry from "@sentry/node";
+import dotenv from "dotenv";
 
 async function main() {
+  dotenv.config();
+  const SENTRY_DSN = process.env["SENTRY_DSN"];
+  if (SENTRY_DSN) {
+    Sentry.init({ dsn: SENTRY_DSN });
+  }
   const port = 8080;
   const app = express();
   const apolloServer = new ApolloServer<{}>({
