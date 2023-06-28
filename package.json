@@ -47,6 +47,6 @@
     "babel-plugin-prismjs": "^2.1.0",
     "eslint": "^8.43.0",
     "eslint-config-next": "13.4.7",
-    "typescript": "5.0.4"
+    "typescript": "5.1.5"
   }
 }
