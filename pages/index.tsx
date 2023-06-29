@@ -14,6 +14,7 @@ import { PrismCode } from "../lib/prism-code";
 import { unindent } from "../lib/unindent";
 import { withApolloClient } from "../lib/with-apollo-client";
 import * as Sentry from "@sentry/browser";
+import ga4 from "react-ga4";
 
 const PRIMARY_COLOR_0 = "rgba(235,  3,160,1)";
 const PRIMARY_COLOR_1 = "rgba(245,149,214,1)";
@@ -28,6 +29,11 @@ const Index = withApolloClient(function Index(): ReactElement {
     const NEXT_PUBLIC_SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"];
     if (NEXT_PUBLIC_SENTRY_DSN) {
       Sentry.init({ dsn: NEXT_PUBLIC_SENTRY_DSN });
+    }
+    const NEXT_PUBLIC_GA_MEASUREMENT_ID =
+      process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"];
+    if (NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+      ga4.initialize(NEXT_PUBLIC_GA_MEASUREMENT_ID);
     }
   }
   return (
