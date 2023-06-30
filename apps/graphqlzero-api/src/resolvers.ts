@@ -1,11 +1,11 @@
 import { IResolvers } from "@graphql-tools/utils";
-import { resolvers as albumResolvers } from "./models/album.js";
-import { resolvers as commentResolvers } from "./models/comment.js";
-import { resolvers as pageResolvers } from "./models/page.js";
-import { resolvers as photoResolvers } from "./models/photo.js";
-import { resolvers as postResolvers } from "./models/post.js";
-import { resolvers as todoResolvers } from "./models/todo.js";
-import { resolvers as userResolvers } from "./models/user.js";
+import { resolvers as albumResolvers } from "./models/album";
+import { resolvers as commentResolvers } from "./models/comment";
+import { resolvers as pageResolvers } from "./models/page";
+import { resolvers as photoResolvers } from "./models/photo";
+import { resolvers as postResolvers } from "./models/post";
+import { resolvers as todoResolvers } from "./models/todo";
+import { resolvers as userResolvers } from "./models/user";
 
 /**
  *

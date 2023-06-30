@@ -1,14 +1,14 @@
 import { gql } from "graphql-tag";
-import { Page, PageQueryOptions } from "./page.js";
-import { Photo } from "./photo.js";
-import { fetchUser, User } from "./user.js";
+import { Page, PageQueryOptions } from "./page";
+import { Photo } from "./photo";
+import { fetchUser, User } from "./user";
 import {
   createResource,
   deleteResource,
   fetchPage,
   fetchResource,
   updateResource,
-} from "./util/json-placeholder.js";
+} from "../util/json-placeholder";
 
 export const typeDefs = gql`
   extend type Query {

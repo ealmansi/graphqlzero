@@ -9,7 +9,7 @@ import {
   SearchOptions,
   SliceOptions,
   SortOptions,
-} from "../page.js";
+} from "../models/page";
 
 let apiBaseUrl = process.env["JSON_PLACEHOLDER_URL"];
 if (!(typeof apiBaseUrl === "string" && apiBaseUrl.length > 0)) {

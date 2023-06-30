@@ -1,20 +1,22 @@
+"use client";
+
 import { MutationResult, QueryResult } from "@apollo/client";
 import { useMutation, useQuery } from "@apollo/client";
 import { gql } from "@apollo/client";
-import Head from "next/head";
 import React, { ReactElement, useEffect, useState } from "react";
+import * as Sentry from "@sentry/browser";
+import ga4 from "react-ga4";
+
 import ExampleOperation, {
   getDefaultExampleOperation,
   getExampleOperations,
-} from "../lib/example-operation";
-import { font } from "../lib/font";
-import { okaidia } from "../lib/okaidia";
-import { omitTypename } from "../lib/omit-typename";
-import { PrismCode } from "../lib/prism-code";
-import { unindent } from "../lib/unindent";
-import { withApolloClient } from "../lib/with-apollo-client";
-import * as Sentry from "@sentry/browser";
-import ga4 from "react-ga4";
+} from "../src/example-operation";
+import { font } from "../src/font";
+import { okaidia } from "../src/okaidia";
+import { omitTypename } from "../src/omit-typename";
+import { PrismCode } from "../src/prism-code";
+import { unindent } from "../src/unindent";
+import { withApolloClient } from "../src/with-apollo-client";
 
 const PRIMARY_COLOR_0 = "rgba(235,  3,160,1)";
 const PRIMARY_COLOR_1 = "rgba(245,149,214,1)";
@@ -24,66 +26,10 @@ const PRIMARY_COLOR_3 = "rgba(199,  0,134,1)";
 const PRIMARY_COLOR_4 = "rgba(126,  0, 85,1)";
 const PRIMARY_COLOR_5 = "rgba(98,   0, 66,1)";
 
-const Index = withApolloClient(function Index(): ReactElement {
-  if (typeof window !== "undefined") {
-    const NEXT_PUBLIC_SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"];
-    if (NEXT_PUBLIC_SENTRY_DSN) {
-      Sentry.init({ dsn: NEXT_PUBLIC_SENTRY_DSN });
-    }
-    const NEXT_PUBLIC_GA_MEASUREMENT_ID =
-      process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"];
-    if (NEXT_PUBLIC_GA_MEASUREMENT_ID) {
-      ga4.initialize(NEXT_PUBLIC_GA_MEASUREMENT_ID);
-    }
-  }
+export default withApolloClient(function () {
+  initialize();
   return (
     <div>
-      <Head>
-        <title>GraphQLZero: A Simple, Zero-Config Fake GraphQL API.</title>
-        <meta
-          name="description"
-          content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."
-        />
-        <link rel="canonical" href="https://graphqlzero.almansi.me/" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff"></meta>
-        <meta name="og:title" content="GraphQLZero" />
-        <meta name="og:type" content="software" />
-        <meta name="og:url" content="https://graphqlzero.almansi.me/" />
-        <meta
-          name="og:image"
-          content="https://graphqlzero.almansi.me/graphql-image.jpg"
-        />
-        <meta name="og:site_name" content="GraphQLZero" />
-        <meta
-          name="og:description"
-          content="GraphQLZero is a free, online GraphQL API that you can use to get fake data from a real backend while testing or prototyping your app."
-        />
-        <meta
-          name="google-site-verification"
-          content="UCPORh5hdVtXlGIwXOH4DSeRlGLPicaYtUNeHTqg8kA"
-        />
-      </Head>
       <TopBar />
       <Header />
       <Main />
@@ -134,6 +80,21 @@ const Index = withApolloClient(function Index(): ReactElement {
     </div>
   );
 });
+
+function initialize() {
+  if (typeof window === "undefined") {
+    return;
+  }
+  const NEXT_PUBLIC_SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"];
+  if (NEXT_PUBLIC_SENTRY_DSN) {
+    Sentry.init({ dsn: NEXT_PUBLIC_SENTRY_DSN });
+  }
+  const NEXT_PUBLIC_GA_MEASUREMENT_ID =
+    process.env["NEXT_PUBLIC_GA_MEASUREMENT_ID"];
+  if (NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+    ga4.initialize(NEXT_PUBLIC_GA_MEASUREMENT_ID);
+  }
+}
 
 function TopBar(): ReactElement {
   return (
@@ -890,5 +851,3 @@ function Footer(): ReactElement {
     </footer>
   );
 }
-
-export default Index;

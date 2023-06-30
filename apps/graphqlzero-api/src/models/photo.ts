@@ -1,13 +1,13 @@
 import { gql } from "graphql-tag";
-import { Album, fetchAlbum } from "./album.js";
-import { Page, PageQueryOptions } from "./page.js";
+import { Album, fetchAlbum } from "./album";
+import { Page, PageQueryOptions } from "./page";
 import {
   createResource,
   deleteResource,
   fetchPage,
   fetchResource,
   updateResource,
-} from "./util/json-placeholder.js";
+} from "../util/json-placeholder";
 
 export const typeDefs = gql`
   extend type Query {

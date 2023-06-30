@@ -1,15 +1,15 @@
 import { gql } from "graphql-tag";
-import { Album } from "./album.js";
-import { Page, PageQueryOptions } from "./page.js";
-import { Post } from "./post.js";
-import { Todo } from "./todo.js";
+import { Album } from "./album";
+import { Page, PageQueryOptions } from "./page";
+import { Post } from "./post";
+import { Todo } from "./todo";
 import {
   createResource,
   deleteResource,
   fetchPage,
   fetchResource,
   updateResource,
-} from "./util/json-placeholder.js";
+} from "../util/json-placeholder";
 
 export const typeDefs = gql`
   extend type Query {

@@ -1,9 +1,15 @@
 {
-  "name": "graphqlzero",
+  "name": "graphqlzero-web",
   "version": "2.0.0",
   "private": true,
-  "type": "module",
   "description": "GraphQLZero: A simple, zero-config fake GraphQL API.",
+  "main": "app/page.tsx",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ealmansi/graphqlzero.git"
@@ -14,15 +20,9 @@
     "url": "https://github.com/ealmansi/graphqlzero/issues"
   },
   "homepage": "https://github.com/ealmansi/graphqlzero#readme",
-  "engines": {
-    "npm": ">=9.0.0 <10.0.0",
-    "node": ">=18.0.0 <19.0.0"
-  },
-  "workspaces": [
-    "apps/graphqlzero-api",
-    "apps/graphqlzero-web"
-  ],
-  "devDependencies": {
-    "prettier": "^2.8.8"
+  "dependencies": {
+    "next": "^13.4.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

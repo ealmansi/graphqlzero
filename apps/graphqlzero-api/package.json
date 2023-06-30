@@ -1,0 +1,42 @@
+{
+  "name": "graphqlzero-api",
+  "version": "2.0.0",
+  "private": true,
+  "description": "GraphQLZero: A simple, zero-config fake GraphQL API.",
+  "main": "src/api.js",
+  "scripts": {
+    "start": "serverless offline start",
+    "deploy": "serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ealmansi/graphqlzero.git"
+  },
+  "author": "Emilio Almansi <ealmansi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ealmansi/graphqlzero/issues"
+  },
+  "homepage": "https://github.com/ealmansi/graphqlzero#readme",
+  "dependencies": {
+    "@apollo/server": "^4.7.5",
+    "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
+    "@as-integrations/aws-lambda": "^2.0.1",
+    "@graphql-tools/utils": "^10.0.1",
+    "graphql": "^16.7.1",
+    "graphql-tag": "^2.12.6",
+    "parse-link-header": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/parse-link-header": "^2.0.1",
+    "encoding": "^0.1.13",
+    "serverless": "^3.33.0",
+    "serverless-offline": "^12.0.4",
+    "serverless-plugin-typescript": "^2.1.5",
+    "serverless-webpack": "^5.11.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

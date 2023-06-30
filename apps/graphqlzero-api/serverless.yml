@@ -1,0 +1,19 @@
+service: graphqlzero-api
+provider:
+  name: aws
+  runtime: nodejs18.x
+  httpApi:
+    cors: true
+functions:
+  api:
+    handler: src/api.handler
+    events:
+      - httpApi:
+          path: /api
+          method: GET
+      - httpApi:
+          path: /api
+          method: POST
+plugins:
+  - serverless-webpack
+  - serverless-offline
