@@ -1,28 +1,33 @@
 ---
-  env:
-    AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-    AWS_REGION: ${{ secrets.AWS_REGION }}
-    S3_BUCKET_URI: ${{ secrets.S3_BUCKET_URI }}
-  jobs:
-    deploy:
-      permissions:
-        id-token: write
-        contents: read
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 18.x
-        - uses: aws-actions/configure-aws-credentials@v2
-          with:
-            role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
-            aws-region: ${{ env.AWS_REGION }}
-        - run: npm ci
-        - run: npm run build --workspace=graphqlzero-web
-        - run: aws s3 sync $GITHUB_WORKSPACE/apps/graphqlzero-web/out $S3_BUCKET_URI --delete
-  on:
-    push:
-      branches: ['master']
-      paths: ['apps/graphqlzero-web/**']
-  
+env:
+  AWS_ROLE_TO_ASSUME: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  S3_BUCKET_URI: ${{ secrets.S3_BUCKET_URI }}
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+  GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+jobs:
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: npm ci
+      - run: |
+          touch .env
+          echo "NEXT_PUBLIC_SENTRY_DSN=$SENTRY_DSN" >> .env
+          echo "NEXT_PUBLIC_GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID" >> .env
+      - run: npm run build --workspace=graphqlzero-web
+      - run: aws s3 sync $GITHUB_WORKSPACE/apps/graphqlzero-web/out $S3_BUCKET_URI --delete
+on:
+  push:
+    branches: ["master"]
+    paths: ["apps/graphqlzero-web/**"]
