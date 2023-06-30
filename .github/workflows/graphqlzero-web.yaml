@@ -28,7 +28,7 @@ jobs:
           echo "NEXT_PUBLIC_GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID" >> .env
       - run: npm run build --workspace=graphqlzero-web
       - run: aws s3 sync $GITHUB_WORKSPACE/apps/graphqlzero-web/out $S3_BUCKET_URI --delete
-      - run: aws cloudfront create-invalidation --distribution-id=CF_DISTRIBUTION_ID --paths "/*"
+      - run: aws cloudfront create-invalidation --distribution-id=$CF_DISTRIBUTION_ID --paths "/*"
 on:
   push:
     branches: ["master"]
