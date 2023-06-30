@@ -32,4 +32,7 @@ jobs:
 on:
   push:
     branches: ["master"]
-    paths: ["apps/graphqlzero-web/**"]
+    paths: [
+      ".github/workflows/graphqlzero-web.yaml",
+      "apps/graphqlzero-web/**"
+    ]

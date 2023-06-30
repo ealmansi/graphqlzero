@@ -22,4 +22,7 @@ jobs:
 on:
   push:
     branches: ["master"]
-    paths: ["apps/graphqlzero-api/**"]
+    paths: [
+      ".github/workflows/graphqlzero-api.yaml",
+      "apps/graphqlzero-api/**"
+    ]
