@@ -9,12 +9,12 @@
 First, check out the [example queries and mutations](https://graphqlzero.almansi.me/#examples) that you can run right from our website. The easiest way to get started is by visiting the [GraphQL API Playground](https://graphqlzero.almansi.me/api), where you can see the API's docs and run queries against the real backend.
 
 <div style="text-align: center; margin: 50px 0;">
-  <img src="public/img/playground-1.png" alt="GraphQL Playground: Query Execution" style="border-radius: 0.3em;"/>
+  <img src="apps/graphqlzero-web/public/img/playground-1.png" alt="GraphQL Playground: Query Execution" style="border-radius: 0.3em;"/>
   <p>1) GraphQL Playground: Query Execution.</p>
 </div>
 
 <div style="text-align: center; margin: 50px 0;">
-  <img src="public/img/playground-2.png" alt="GraphQL Playground: API Docs" style="border-radius: 0.3em;"/>
+  <img src="apps/graphqlzero-web/public/img/playground-2.png" alt="GraphQL Playground: API Docs" style="border-radius: 0.3em;"/>
   <p>2) GraphQL Playground: API Docs.</p>
 </div>
 
