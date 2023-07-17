@@ -23,7 +23,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.17",
     "@sentry/browser": "^7.57.0",
-    "next": "^13.4.9",
+    "next": "^13.4.10",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
