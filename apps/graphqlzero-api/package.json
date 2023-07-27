@@ -22,7 +22,7 @@
     "@apollo/server": "^4.7.5",
     "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
     "@as-integrations/aws-lambda": "^2.0.1",
-    "@graphql-tools/utils": "^10.0.3",
+    "@graphql-tools/utils": "^10.0.4",
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
     "parse-link-header": "^2.0.0"
