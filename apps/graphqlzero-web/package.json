@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0",
-    "@types/react": "^18.2.14",
+    "@types/react": "^18.2.15",
     "babel-plugin-prismjs": "^2.1.0",
     "typescript": "^5.1.6"
   }
