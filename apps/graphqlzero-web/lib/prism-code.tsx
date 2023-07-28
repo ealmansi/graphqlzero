@@ -1,34 +1,32 @@
 import Prism from "prismjs";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-/**
- * Source: https://pathof.dev/blog/code-highlighting-in-react-using-prismjs.
- */
-export class PrismCode extends React.Component<any> {
-  private ref: React.RefObject<HTMLInputElement>;
-  constructor(props: any) {
-    super(props);
-    this.ref = React.createRef();
-  }
-  componentDidMount() {
-    this.highlight();
-  }
-  componentDidUpdate() {
-    this.highlight();
-  }
-  highlight = () => {
-    if (this.ref && this.ref.current) {
-      Prism.highlightElement(this.ref.current);
+export interface PrismCodeProps {
+  language: string;
+  code: string;
+  plugins?: string[];
+}
+
+export function PrismCode ({ language, code, plugins }: any) {
+  const [hasRendered, setHasRendered] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    setHasRendered(true);
+  }, []);
+  useEffect(() => {
+    if (!hasRendered) {
+      return;
     }
-  };
-  render() {
-    const { code, plugins, language } = this.props as any;
-    return (
-      <pre className={!plugins ? "" : plugins.join(" ")}>
-        <code ref={this.ref} className={`word-wrap language-${language}`}>
-          {code}
-        </code>
-      </pre>
-    );
-  }
+    if (!ref || !ref.current) {
+      return;
+    }
+    Prism.highlightElement(ref.current);
+  }, [hasRendered, language, code, plugins]);
+  return hasRendered ? (
+    <pre className={plugins ? plugins.join(" ") : undefined}>
+      <code ref={ref} className={`language-${language}`}>
+        {code}
+      </code>
+    </pre>
+  ) : null;
 }
