@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ealmansi/graphqlzero#readme",
   "dependencies": {
-    "@apollo/server": "^4.7.5",
+    "@apollo/server": "^4.9.0",
     "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
     "@as-integrations/aws-lambda": "^3.0.0",
     "@graphql-tools/utils": "^10.0.4",
