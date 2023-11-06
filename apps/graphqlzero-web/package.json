@@ -31,7 +31,7 @@
     "styled-jsx": "^5.1.2"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.0",
+    "@types/prismjs": "^1.26.2",
     "@types/react": "^18.2.36",
     "babel-plugin-prismjs": "^2.1.0",
     "typescript": "^5.2.2"
