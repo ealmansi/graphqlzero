@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/parse-link-header": "^2.0.1",
     "encoding": "^0.1.13",
-    "serverless": "^3.37.0",
+    "serverless": "^3.38.0",
     "serverless-offline": "^13.2.0",
     "serverless-plugin-typescript": "^2.1.5",
     "serverless-webpack": "^5.13.0",
