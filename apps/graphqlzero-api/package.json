@@ -21,7 +21,7 @@
   "dependencies": {
     "@apollo/server": "^4.9.5",
     "@apollo/server-plugin-landing-page-graphql-playground": "^4.0.1",
-    "@as-integrations/aws-lambda": "^3.0.0",
+    "@as-integrations/aws-lambda": "^3.1.0",
     "@graphql-tools/utils": "^10.0.8",
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
