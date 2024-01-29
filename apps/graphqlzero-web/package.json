@@ -22,7 +22,7 @@
   "homepage": "https://github.com/ealmansi/graphqlzero#readme",
   "dependencies": {
     "@apollo/client": "^3.8.5",
-    "@sentry/browser": "^7.74.0",
+    "@sentry/browser": "^7.98.0",
     "next": "^13.4.12",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
